@@ -303,6 +303,10 @@ footer section li {
   margin: 4px 0;
 }
 
+.tauros {
+  height: 1em;
+}
+
 /* Footer 
 footer {
   display: flex;
