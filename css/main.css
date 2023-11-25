@@ -62,8 +62,9 @@ header {
 
 /* Navbar (general) */
 nav {
-  position: relative;
+  position: sticky;
   padding: 0 24px;
+  top: 0;
   border-bottom: 1px solid var(--very-light-gray);
   background-color: var(--white);
   z-index: 2;
