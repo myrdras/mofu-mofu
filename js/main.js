@@ -1,3 +1,4 @@
+const nav = document.querySelector('nav');
 const shopMenu = document.querySelector('.navbar-shopping-cart');
 const shopOrder = document.querySelector('#shoppingCartContainer');
 const productDetail = document.querySelector('#productDetail');
@@ -18,6 +19,9 @@ function toggleShopOrder() {
   if (flag) {
     shopOrder.classList.remove('inactive');
     overlay.classList.remove("inactive");
+    const body = document.body;
+    body.style.overflow = 'hidden';
+    nav.style.position = 'fixed';
   }
 }
 
@@ -25,12 +29,17 @@ function closeAll() {
   shopOrder.classList.add('inactive');
   productDetail.classList.add('inactive');
   overlay.classList.add("inactive");
+  const body = document.body;
+  body.style.overflow = '';
+  nav.style.position = '';
 }
 
 function openDetail() {
   closeAll()
   productDetail.classList.remove('inactive');;
   overlay.classList.remove("inactive");
+  const body = document.body;
+  body.style.overflow = 'hidden';
 }
 
 shopMenu.addEventListener('click', toggleShopOrder);

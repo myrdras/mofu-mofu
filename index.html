@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-Ar">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="./assets/ico.svg">
+  <link rel="apple-touch-icon" type="image/svg+xml" href="./assets/ico.svg">
   <title>Mofu Mofu</title>
 
   <link rel="stylesheet" href="./css/main.css">
@@ -33,55 +34,55 @@
         </li>
       </ul>
     </div>
+    
+    <aside id="shoppingCartContainer" class="inactive">
+      <div class="title-container">
+        <i class="fas fa-angle-left"></i>
+        <p class="title">Mi orden</p>
+      </div>
+
+      <div class="my-order-content">
+        <div class="cart-items">
+          <div class="shopping-cart">
+            <figure>
+              <img src="./assets/bg-gray.jpg" alt="Pikachu">
+            </figure>
+            <p>Pikachu</p>
+            <p>x1</p>
+            <p>$30,00</p>
+            <i class="fas fa-xmark"></i>
+          </div>
+    
+          <div class="shopping-cart">
+            <figure>
+              <img src="./assets/bg-gray.jpg" alt="Pikachu">
+            </figure>
+            <p>Pikachu</p>
+            <p>x1</p>
+            <p>$30,00</p>
+            <i class="fas fa-xmark"></i>
+          </div>
+    
+          <div class="shopping-cart">
+            <figure>
+              <img src="./assets/bg-gray.jpg" alt="Pikachu">
+            </figure>
+            <p>Pikachu</p>
+            <p>x1</p>
+            <p>$30,00</p>
+            <i class="fas fa-xmark"></i>
+          </div>
+        </div>
+
+        <div class="order">
+          <p>Total</p>
+          <p>$560.00</p>
+        </div>
+
+        <button class="primary-button">Pagar</button>
+      </div>
+    </aside>
   </nav>
-  
-  <aside id="shoppingCartContainer" class="inactive">
-    <div class="title-container">
-      <i class="fas fa-angle-left"></i>
-      <p class="title">Mi orden</p>
-    </div>
-
-    <div class="my-order-content">
-      <div class="shopping-cart">
-        <figure>
-          <img src="./assets/bg-gray.jpg" alt="Pikachu">
-        </figure>
-        <p>Pikachu</p>
-        <p>x1</p>
-        <p>$30,00</p>
-        <i class="fas fa-xmark"></i>
-      </div>
-
-      <div class="shopping-cart">
-        <figure>
-          <img src="./assets/bg-gray.jpg" alt="Pikachu">
-        </figure>
-        <p>Pikachu</p>
-        <p>x1</p>
-        <p>$30,00</p>
-        <i class="fas fa-xmark"></i>
-      </div>
-
-      <div class="shopping-cart">
-        <figure>
-          <img src="./assets/bg-gray.jpg" alt="Pikachu">
-        </figure>
-        <p>Pikachu</p>
-        <p>x1</p>
-        <p>$30,00</p>
-        <i class="fas fa-xmark"></i>
-      </div>
-
-      <div class="order">
-        <p>
-          <span>Total</span>
-        </p>
-        <p>$560.00</p>
-      </div>
-
-      <button class="primary-button">Pagar</button>
-    </div>
-  </aside>
 
   <aside id="productDetail" class="inactive">
     <div class="product-detail-close">
@@ -98,8 +99,17 @@
 
   <div class="overlay inactive"></div>
 
-  <section id="carrousel">
-    <img src="./assets/carrousel1.jpg" alt="imagen">
+  <section class="slides-container">
+    <div class="image-slides">
+      <div class="slide-hero fade"><img src="./assets/hero1.jpg" alt="imagen"></div>
+      <div class="slide-hero fade"><img src="./assets/bg-gray.jpg" alt="imagen"></div>
+      <div class="slide-hero fade"><img src="./assets/hero1.jpg" alt="imagen"></div>
+    </div>
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
   </section>
 
   <section id="trends-container">
@@ -185,5 +195,6 @@
   </footer>
 
   <script src="./js/main.js"></script>
+  <script src="./js/slide.js"></script>
 </body>
 </html>

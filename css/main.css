@@ -40,7 +40,7 @@ a {
   z-index: 1;
 }
 section {
-  margin: 50px;
+  margin: 30px;
 }
 section h2 img {
   position: relative;
@@ -57,17 +57,19 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 1px solid var(--very-light-gray);
-  z-index: 2;
 }
 
 /* Navbar (general) */
 nav {
   position: sticky;
-  padding: 0 24px;
   top: 0;
+  z-index: 3;
+  width: -moz-available;
+}
+.main-navbar {
+  padding: 0 24px;
   border-bottom: 1px solid var(--very-light-gray);
   background-color: var(--white);
-  z-index: 2;
 }
 .logo {
   height: 33vh;
@@ -112,13 +114,43 @@ nav {
   justify-content: center;
 }
 
-/* Carrousel */
-#carrousel {
-  text-align: center;
-  margin: 20px 0;
+/* Hero */
+.slides-container {
+  margin: 30px 0;
+  box-sizing: border-box;
 }
-#carrousel img {
-  width: 80vw;
+.image-slides {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+}
+.slide-hero {
+  display: none;
+}
+.image-slides img {
+  max-width: 80vh;
+  width: 100vw;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+  background-color: #717171;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
 
 /* Product list */
@@ -164,20 +196,25 @@ nav {
 /* Aside (product detail y carrito) */
 aside {
   width: 100vw;
+  height: auto;
+  max-height: calc(100vh - 60px);
   box-sizing: border-box;
-  position: absolute;
+  position: fixed;
+  overflow: hidden;
   right: 0;
+  top: 60px;
   background-color: var(--white);
   z-index: 2;
 }
 
 /* Shopping Cart */
 #shoppingCartContainer {
-  padding: 24px;
+  padding-bottom: 20px;
   padding-top: 0;
 }
 .title-container {
   display: flex;
+  padding-left: 10px;
 }
 .title-container i {
   align-self: center;
@@ -187,6 +224,7 @@ aside {
 .title {
   font-size: var(--lg);
   font-weight: bold;
+  margin: 15px 0;
 }
 .order {
   display: grid;
@@ -194,15 +232,11 @@ aside {
   gap: 16px;
   align-items: center;
   background-color: var(--text-input-field);
-  margin-bottom: 24px;
+  margin: 15px 0;
   border-radius: 8px;
   padding: 0 24px;
 }
 .order p:nth-child(1) {
-  display: flex;
-  flex-direction: column;
-}
-.order p span:nth-child(1) {
   font-size: var(--md);
   font-weight: bold;
 }
@@ -210,12 +244,19 @@ aside {
   text-align: end;
   font-weight: bold;
 }
+.my-order-content {
+  padding: 0 20px;
+}
 .shopping-cart {
   display: grid;
   grid-template-columns: auto auto 1fr auto auto;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
+  margin-right: 20px;
   align-items: center;
+}
+.shopping-cart:last-child {
+  margin-bottom: 0;
 }
 .shopping-cart figure {
   margin: 0;
@@ -233,6 +274,11 @@ aside {
 .shopping-cart p:nth-child(4) {
   font-size: var(--md);
   font-weight: bold;
+}
+.cart-items {
+  max-height: calc(100vh - 282px);
+  overflow-x: auto;
+  margin-right: -20px;
 }
 
 /* Product Deatil */
