@@ -131,7 +131,7 @@ nav {
   margin: 0 auto;
   text-align: center;
   width: 100vw;
-  max-width: 80vh;
+  max-width: 100vh;
   aspect-ratio: 23/16;
 }
 .image-slides img {
@@ -149,17 +149,34 @@ nav {
   right: 0;
 }
 .dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #fff;
+  border: 0;
   border-radius: 50%;
-  display: inline-block;
+  background: #fff;
+  color: white;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.4rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  margin: 0 2px;
   transition: background-color 0.6s ease;
 }
-.dot.is-active, .dot:hover {
+.dot.is-active, .dot.is-active:focus {
   background-color: #717171;
+}
+.dot:hover,
+.dot:focus {
+    background: #717171;
+}
+.dot:focus {
+    outline: 0 solid #fff;
+    outline-offset: -4px;
+}
+.dot:active {
+    transform: scale(0.99);
 }
 .fade {
   animation-name: fade;
@@ -189,7 +206,6 @@ nav {
 }
 .product-card .product-info {
   display: flex;
-  align-items: center;
   margin: 0 0 0 20px;
   flex-direction: column;
 }
