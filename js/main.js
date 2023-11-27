@@ -1,6 +1,8 @@
 const nav = document.querySelector('nav');
 const shopMenu = document.querySelector('.navbar-shopping-cart');
 const shopOrder = document.querySelector('#shoppingCartContainer');
+const categoryMenu = document.querySelector('#categoryMenu');
+const categoryList = document.querySelector('#categoriesContainer');
 const productDetail = document.querySelector('#productDetail');
 const productDetailClose = document.querySelector('.product-detail-close');
 const queryCloseAside = document.querySelectorAll('.fa-angle-left');
@@ -25,13 +27,23 @@ function toggleShopOrder() {
   }
 }
 
+function toggleCategoryList() {
+  let flag = categoryList.classList.contains('inactive');
+  closeAll();
+  if (flag) {
+    categoryList.style.left = categoryMenu.offsetLeft + 'px';
+    categoryList.classList.remove('inactive');
+  }
+}
+
 function closeAll() {
   shopOrder.classList.add('inactive');
   productDetail.classList.add('inactive');
+  categoryList.classList.add('inactive');
   overlay.classList.add("inactive");
   const body = document.body;
-  body.style.overflow = '';
-  nav.style.position = '';
+  body.removeAttribute('style');
+  nav.removeAttribute('style');
 }
 
 function openDetail() {
@@ -43,6 +55,7 @@ function openDetail() {
 }
 
 shopMenu.addEventListener('click', toggleShopOrder);
+categoryMenu.addEventListener('click', toggleCategoryList);
 productDetailClose.addEventListener('click', closeAll);
 overlay.addEventListener('click', closeAll);
 closeAside.forEach(btn => {btn.addEventListener('click', closeAll)})
