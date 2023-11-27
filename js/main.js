@@ -20,6 +20,7 @@ function toggleShopOrder() {
   closeAll();
   if (flag) {
     shopOrder.classList.remove('inactive');
+    shopMenu.classList.add('tag-hover');
     overlay.classList.remove("inactive");
     const body = document.body;
     body.style.overflow = 'hidden';
@@ -31,8 +32,8 @@ function toggleCategoryList() {
   let flag = categoryList.classList.contains('inactive');
   closeAll();
   if (flag) {
-    categoryList.style.left = categoryMenu.offsetLeft + 'px';
     categoryList.classList.remove('inactive');
+    categoryMenu.classList.add('tag-hover');
   }
 }
 
@@ -41,6 +42,8 @@ function closeAll() {
   productDetail.classList.add('inactive');
   categoryList.classList.add('inactive');
   overlay.classList.add("inactive");
+  shopMenu.classList.remove('tag-hover');
+  categoryMenu.classList.remove('tag-hover');
   const body = document.body;
   body.removeAttribute('style');
   nav.removeAttribute('style');

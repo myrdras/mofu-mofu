@@ -26,6 +26,7 @@ a {
 }
 ul {
   padding: 0;
+  margin: 0;
   list-style-type: none;
 }
 .inactive {
@@ -100,7 +101,14 @@ nav {
   border-radius: 8px;
   cursor: pointer;
 }
+.main-navbar ul li span {
+  margin-left: 0.5em;
+}
 .main-navbar ul li:hover {
+  border: 1px solid var(--highlight-color);
+  color: var(--highlight-color);
+}
+.main-navbar .tag-hover {
   border: 1px solid var(--highlight-color);
   color: var(--highlight-color);
 }
@@ -126,9 +134,20 @@ nav {
 #categoriesContainer {
   position: absolute;
   background-color: var(--white);
-  padding: 0 20px;
   border-radius: 0 0 10px 10px;
   color: var(--letter-color);
+  left: 45%;
+}
+#categoriesContainer li {
+  padding: 5px 15px;
+}
+#categoriesContainer li:last-child {
+  border-radius: 0 0 10px 10px;
+}
+#categoriesContainer li:hover,
+#categoriesContainer li:active {
+  color: var(--letter-fill);
+  background-color: var(--highlight-color);
 }
 
 /* Carousel */
@@ -161,8 +180,8 @@ nav {
 .dot {
   border: 0;
   border-radius: 50%;
-  background: #fff;
-  color: white;
+  background: #717171;
+  color: #717171;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.2;
@@ -172,17 +191,17 @@ nav {
   margin: 0.25rem;
   cursor: pointer;
   margin: 0 2px;
-  transition: background-color 0.6s ease;
+  transition: background-color 0.3s ease;
 }
 .dot.is-active, .dot.is-active:focus {
-  background-color: #717171;
+  background-color: #fff;
 }
 .dot:hover,
 .dot:focus {
-  background: #717171;
+  background: #fff;
 }
 .dot:focus {
-  outline: 0 solid #fff;
+  outline: 0 solid #717171;
   outline-offset: -4px;
 }
 .dot:active {

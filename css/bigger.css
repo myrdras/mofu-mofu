@@ -7,6 +7,10 @@ section {
   padding: 0 5vw;
 }
 
+#categoriesContainer {
+  left: calc(50% + 7vw);
+}
+
 /* Aside (product detail y carrito) */
 aside {
   width: 400px;
