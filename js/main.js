@@ -8,6 +8,9 @@ const productDetailClose = document.querySelector('.product-detail-close');
 const queryCloseAside = document.querySelectorAll('.fa-angle-left');
 const newCardsContainer = document.querySelector('.cards-new');
 const overlay = document.querySelector(".overlay");
+const searchInput = document.querySelector(".search");
+const searchContainer = document.querySelector('.main-navbar .search-bar');
+const navText = document.querySelectorAll('.main-navbar li span');
 
 /************************/
 /******** Modals ********/
@@ -57,11 +60,28 @@ function openDetail() {
   body.style.overflow = 'hidden';
 }
 
+function searchBarOn() {
+  closeAll()
+  searchContainer.classList.add('tag-hover');
+  searchContainer.classList.add('search-bar-on');
+  navText[1].classList.add('inactive');
+  navText[2].classList.add('inactive');
+}
+
+function searchBarOff() {
+  searchContainer.classList.remove('tag-hover');
+  searchContainer.classList.remove('search-bar-on');
+  navText[1].classList.remove('inactive');
+  navText[2].classList.remove('inactive');
+}
+
 shopMenu.addEventListener('click', toggleShopOrder);
 categoryMenu.addEventListener('click', toggleCategoryList);
 productDetailClose.addEventListener('click', closeAll);
 overlay.addEventListener('click', closeAll);
-closeAside.forEach(btn => {btn.addEventListener('click', closeAll)})
+closeAside.forEach(btn => {btn.addEventListener('click', closeAll)});
+searchInput.addEventListener('focusin', searchBarOn);
+searchInput.addEventListener('focusout', searchBarOff);
 
 /************************/
 /***** Product List *****/

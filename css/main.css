@@ -104,13 +104,44 @@ nav {
 .main-navbar ul li span {
   margin-left: 0.5em;
 }
-.main-navbar ul li:hover {
-  border: 1px solid var(--highlight-color);
-  color: var(--highlight-color);
-}
+.main-navbar ul li:hover,
 .main-navbar .tag-hover {
   border: 1px solid var(--highlight-color);
   color: var(--highlight-color);
+}
+.main-navbar .search-bar {
+  width: calc(32px + 1.6em);
+	position: relative;
+	display: inline-block;
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+}
+.main-navbar .search-button {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+}
+.main-navbar .search-bar-on {
+	width: 100%;
+}
+.main-navbar .search {
+	position: absolute;
+	left: 32px;
+	outline: none;
+	border: none;
+	padding: 0;
+  width: 0;
+	height: 100%;
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+  top: 0;
+}
+.main-navbar .search:focus {
+	width: calc(100% - 40px);
 }
 .navbar-shopping-cart {
   position: relative;
@@ -121,7 +152,7 @@ nav {
   color: var(--white);
   background-color: var(--highlight-color);
   border-radius: 50%;
-  font-size: var(--sm);
+  font-size: 14px;
   font-weight: bold;
   position: absolute;
   top: -4px;
