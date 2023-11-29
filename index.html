@@ -174,8 +174,21 @@
     <section class="subscribe">
       <ul>
         <li><h3>Recibe las novedades más rápido</h3></li>
-        <li>Nombre</li>
-        <li>Email</li>
+        <li>
+          <form action="" method="get">
+            <div class="subscribeForm">
+              <input type="text" name="name" id="name" placeholder=" " required />
+              <label for="name">Nombre</label>
+            </div>
+            <div class="subscribeForm">
+              <input type="email" name="email" id="email" placeholder=" " required />
+              <label for="email">Email </label>
+            </div>
+            <div class="subscribeForm">
+              <input class="primary-button" type="submit" value="Subscribir" />
+            </div>
+          </form>
+        </li>
       </ul>
     </section>
 

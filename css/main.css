@@ -5,8 +5,8 @@
   --bg-color: #FEE3A2;
   --letter-color: #e6ab37;
   --letter-fill: #ffde59;
-  --very-light-gray: #ADCACB;
-  --text-input-field: #f7f7f7;
+  --light-gray: #ADCACB;
+  --text-input-field: #706c6c;
   --highlight-color: #87C159;
   --sm: 16px;
   --md: 18px;
@@ -28,6 +28,14 @@ ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+input {
+  font-size: inherit;
+  font-family: inherit;
+  border: none;
+  outline: none;
+  padding: 0;
+  background: none;
 }
 .inactive {
   display: none;
@@ -62,7 +70,7 @@ header {
   background-image: url("../assets/fondo-web.png");
   background-repeat: no-repeat;
   background-size: cover;
-  border-bottom: 1px solid var(--very-light-gray);
+  border-bottom: 1px solid var(--light-gray);
 }
 
 /* Navbar (general) */
@@ -75,7 +83,7 @@ nav {
 .main-navbar {
   position: relative;
   padding: 0 10px;
-  border-bottom: 1px solid var(--very-light-gray);
+  border-bottom: 1px solid var(--light-gray);
   background-color: var(--white);
   z-index: 3;
 }
@@ -129,11 +137,6 @@ nav {
 .main-navbar .search {
 	position: absolute;
 	left: 32px;
-  font-family: inherit;
-  font-size: inherit;
-	outline: none;
-	border: none;
-	padding: 0;
   width: 0;
   top: 0;
 	height: 100%;
@@ -171,6 +174,7 @@ nav {
   border-radius: 0 0 10px 10px;
   color: var(--letter-color);
   left: calc(50% - 10px);
+  box-shadow: 0 0 10px 5px rgb(0, 0, 0, .3);
 }
 #categoriesContainer li {
   padding: 5px 15px;
@@ -281,7 +285,7 @@ nav {
   font-size: var(--sm);
   margin-top: 0;
   margin-bottom: 0;
-  color: var(--very-light-gray);
+  color: var(--light-gray);
 }
 
 /* Aside (product detail y carrito) */
@@ -309,7 +313,7 @@ aside {
 }
 .title-container i {
   align-self: center;
-  color: var(--very-light-gray);
+  color: var(--light-gray);
   margin-right: 14px;
 }
 .title {
@@ -322,7 +326,7 @@ aside {
   grid-template-columns: auto 1fr;
   gap: 16px;
   align-items: center;
-  background-color: var(--text-input-field);
+  background-color: #f7f7f7;
   margin: 15px 0;
   border-radius: 8px;
   padding: 0 24px;
@@ -360,7 +364,7 @@ aside {
 }
 .shopping-cart p:nth-child(2),
 .shopping-cart p:nth-child(3) {
-  color: var(--very-light-gray);
+  color: var(--light-gray);
 }
 .shopping-cart p:nth-child(4) {
   font-size: var(--md);
@@ -403,13 +407,13 @@ aside {
   margin-bottom: 4px;
 }
 .product-info p:nth-child(2) {
-  color: var(--very-light-gray);
+  color: var(--light-gray);
   font-size: var(--md);
   margin-top: 0;
   margin-bottom: 25px;
 }
 .product-info p:nth-child(3) {
-  color: var(--very-light-gray);
+  color: var(--light-gray);
   font-size: var(--sm);
   margin-top: 0;
   margin-bottom: 20px;
@@ -431,7 +435,7 @@ aside {
 footer {
   padding: 20px;
   background-color: var(--bg-color);
-  border-top: 1px solid var(--very-light-gray);
+  border-top: 1px solid var(--light-gray);
 }
 footer section {
   max-width: 200px;
@@ -458,4 +462,42 @@ footer section li {
 
 .tauros {
   height: 1em;
+}
+
+footer .subscribe .subscribeForm .primary-button {
+  height: auto;
+  width: auto;
+  padding: 5px 10px;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--letter-fill);
+}
+
+footer .subscribe .subscribeForm {
+  position: relative;
+  margin: 4px 0 1em 0;
+}
+
+footer .subscribe .subscribeForm input {
+  color: var(--text-input-field);
+  padding: 0 .2em;
+  border-bottom: 1px solid var(--text-input-field);
+}
+
+footer .subscribe .subscribeForm input:not(:placeholder-shown) + label,
+footer .subscribe .subscribeForm input:focus + label {
+  transform: translateY(-.2em) scale(.7);
+  transform-origin: top left;
+  color: var(--highlight-color);
+}
+
+footer .subscribe .subscribeForm label {
+  color: var(--text-input-field);
+  cursor: pointer;
+  position: absolute;
+  bottom: .8em;
+  left: 1em;
+  transform: translateY(10px);
+  transition: transform .5s, color .3s;
 }
