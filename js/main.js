@@ -60,6 +60,15 @@ function openDetail() {
   body.style.overflow = 'hidden';
 }
 
+let focusFlag = false;
+function toggleSearch(flag, on=false) {
+  if (flag || (!flag && on)) {
+    searchInput.focus();
+    searchBarOn();
+  } else {
+    searchBarOff();
+  }
+}
 function searchBarOn() {
   closeAll()
   searchContainer.classList.add('tag-hover');
@@ -67,12 +76,22 @@ function searchBarOn() {
   navText[1].classList.add('inactive');
   navText[2].classList.add('inactive');
 }
-
 function searchBarOff() {
   searchContainer.classList.remove('tag-hover');
   searchContainer.classList.remove('search-bar-on');
   navText[1].classList.remove('inactive');
   navText[2].classList.remove('inactive');
+}
+function listenButton() {
+  focusFlag = !focusFlag;
+  let searchOn = searchContainer.classList.contains('search-bar-on');
+  toggleSearch(focusFlag, searchOn);
+}
+function listenFocus() {
+  toggleSearch(true);
+}
+function listenBlur() {
+  toggleSearch(false);
 }
 
 shopMenu.addEventListener('click', toggleShopOrder);
@@ -80,8 +99,13 @@ categoryMenu.addEventListener('click', toggleCategoryList);
 productDetailClose.addEventListener('click', closeAll);
 overlay.addEventListener('click', closeAll);
 closeAside.forEach(btn => {btn.addEventListener('click', closeAll)});
-searchInput.addEventListener('focusin', searchBarOn);
-searchInput.addEventListener('focusout', searchBarOff);
+searchContainer.addEventListener('click', e => {
+  e.preventDefault();
+  e.stopPropagation();
+  listenButton();
+});
+searchInput.addEventListener('focus', listenFocus);
+searchInput.addEventListener('blur', listenBlur);
 
 /************************/
 /***** Product List *****/

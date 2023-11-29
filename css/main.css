@@ -129,16 +129,19 @@ nav {
 .main-navbar .search {
 	position: absolute;
 	left: 32px;
+  font-family: inherit;
+  font-size: inherit;
 	outline: none;
 	border: none;
 	padding: 0;
   width: 0;
+  top: 0;
 	height: 100%;
+  background-color: var(--white);
 	transition-duration: 0.4s;
 	-moz-transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
-  top: 0;
 }
 .main-navbar .search:focus {
 	width: calc(100% - 40px);
@@ -167,7 +170,7 @@ nav {
   background-color: var(--white);
   border-radius: 0 0 10px 10px;
   color: var(--letter-color);
-  left: 45%;
+  left: calc(50% - 10px);
 }
 #categoriesContainer li {
   padding: 5px 15px;

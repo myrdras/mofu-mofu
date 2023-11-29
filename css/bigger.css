@@ -8,7 +8,7 @@ section {
 }
 
 #categoriesContainer {
-  left: calc(50% + 7vw);
+  left: calc(50% + 5vw);
 }
 
 /* Aside (product detail y carrito) */
@@ -57,6 +57,9 @@ footer section:last-child {
   }
   .main-navbar {
     padding: 0 10vw;
+  }
+  #categoriesContainer {
+    left: calc(50% + 7vw);
   }
   .cards-container {
     grid-template-columns: repeat(auto-fill, 240px);
