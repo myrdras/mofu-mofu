@@ -3,8 +3,8 @@ const shopMenu = document.querySelector('.navbar-shopping-cart');
 const shopOrder = document.querySelector('#shoppingCartContainer');
 const categoryMenu = document.querySelector('#categoryMenu');
 const categoryList = document.querySelector('#categoriesContainer');
-const productDetail = document.querySelector('#productDetail');
-const productDetailClose = document.querySelector('.product-detail-close');
+// const productDetail = document.querySelector('#productDetail');
+// const productDetailClose = document.querySelector('.product-detail-close');
 const queryCloseAside = document.querySelectorAll('.fa-angle-left');
 const newCardsContainer = document.querySelector('.cards-new');
 const overlay = document.querySelector(".overlay");
@@ -42,7 +42,7 @@ function toggleCategoryList() {
 
 function closeAll() {
   shopOrder.classList.add('inactive');
-  productDetail.classList.add('inactive');
+  // productDetail.classList.add('inactive');
   categoryList.classList.add('inactive');
   overlay.classList.add("inactive");
   shopMenu.classList.remove('tag-hover');
@@ -52,13 +52,13 @@ function closeAll() {
   nav.removeAttribute('style');
 }
 
-function openDetail() {
-  closeAll()
-  productDetail.classList.remove('inactive');;
-  overlay.classList.remove("inactive");
-  const body = document.body;
-  body.style.overflow = 'hidden';
-}
+// function openDetail() {
+//   closeAll()
+//   productDetail.classList.remove('inactive');;
+//   overlay.classList.remove("inactive");
+//   const body = document.body;
+//   body.style.overflow = 'hidden';
+// }
 
 let focusFlag = false;
 function toggleSearch(flag, on=false) {
@@ -96,7 +96,7 @@ function listenBlur() {
 
 shopMenu.addEventListener('click', toggleShopOrder);
 categoryMenu.addEventListener('click', toggleCategoryList);
-productDetailClose.addEventListener('click', closeAll);
+// productDetailClose.addEventListener('click', closeAll);
 overlay.addEventListener('click', closeAll);
 closeAside.forEach(btn => {btn.addEventListener('click', closeAll)});
 searchContainer.addEventListener('click', e => {
@@ -135,7 +135,7 @@ function renderProducts(arr) {
  
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
-    productImg.addEventListener('click', openDetail);
+    // productImg.addEventListener('click', openDetail);
  
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');

@@ -1,6 +1,9 @@
 section {
   margin: 40px;
 }
+h2 {
+  margin: .8em 0;
+}
 
 /* Navbar */
 .main-navbar {
