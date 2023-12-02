@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/icon-32x32.png">
   
   <title>Mofu Mofu</title>
-  <!-- <link rel="icon" href="/new-home/icon.png?501c01c87786f6c0" type="image/png" sizes="192x192"> -->
+  <script type="module" src="app.js"></script>
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/bigger.css" media="(min-width: 600px)">
   <link rel="stylesheet" href="./css/nav.css">
@@ -101,64 +101,23 @@
     </aside>
   </nav>
 
+  <main id="main-container">
+    <section class="slides-container splide" aria-label="carousel-heading">
+      <div class="splide__track image-slides">
+        <ul class="splide__list">
+          <li class="splide__slide"><img src="./assets/hero1.jpg" alt="imagen"></li>
+          <li class="splide__slide"><img src="./assets/bg-gray.jpg" alt="imagen"></li>
+          <li class="splide__slide"><img src="./assets/hero1.jpg" alt="imagen"></li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="trends-container"></section>
+  
+    <section id="offers-container"></section>
+  </main>
+  
   <div class="overlay inactive"></div>
-
-  <section class="slides-container splide" aria-label="carousel-heading">
-    <div class="splide__track image-slides">
-      <ul class="splide__list">
-        <li class="splide__slide"><img src="./assets/hero1.jpg" alt="imagen"></li>
-        <li class="splide__slide"><img src="./assets/bg-gray.jpg" alt="imagen"></li>
-        <li class="splide__slide"><img src="./assets/hero1.jpg" alt="imagen"></li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="trends-container">
-    <h2><img src="./assets/pokeball.svg"><span>Nueva temporada</span></h2>
-    <div class="cards-container cards-new"></div>
-  </section>
-
-  <section id="offers-container">
-    <h2><img src="./assets/pokeball.svg"><span>Ofertas</span></h2>
-    <div class="cards-container cards-offer">
-      <div class="product-card">
-        <a href="./product-detail.html"><img src="./assets/imgs/slowbro.jpg" alt="imagen"></a>
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Slowbro</p>
-          </div>
-          <figure>
-            <i class="fas fa-cart-plus"></i>
-          </figure>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="./assets/imgs/gengar.jpg" alt="imagen">
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Gengar</p>
-          </div>
-          <figure>
-            <i class="fas fa-cart-plus"></i>
-          </figure>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="./assets/imgs/articuno.jpg" alt="imagen">
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Articuno</p>
-          </div>
-          <figure>
-            <i class="fas fa-cart-plus"></i>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <section class="subscribe">

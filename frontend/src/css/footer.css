@@ -1,0 +1,74 @@
+
+/* Footer */
+footer {
+  padding: 20px;
+  background-color: var(--bg-color);
+  border-top: 1px solid var(--light-gray);
+}
+footer section {
+  max-width: 200px;
+  min-width: 100px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+footer section:first-child {
+  margin-top: 0;
+}
+footer section h3 {
+  margin: 0;
+  font-size: var(--md);
+}
+footer section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+footer section li {
+  margin: 4px 0;
+}
+
+.tauros {
+  height: 1em;
+}
+
+.inputGroup .primary-button {
+  height: auto;
+  width: auto;
+  border: 0;
+  padding: 5px 10px;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--letter-fill);
+}
+
+.inputGroup {
+  position: relative;
+  width: 100%;
+  margin: 4px auto 1em auto;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0 .2em;
+  color: var(--text-input-field);
+  border-bottom: 1px solid var(--text-input-field);
+}
+
+.inputGroup input:not(:placeholder-shown) + label,
+.inputGroup input:focus + label {
+  transform: translateY(-.2em) scale(.7);
+  transform-origin: top left;
+  color: var(--highlight-color);
+}
+
+.inputGroup label {
+  color: var(--text-input-field);
+  cursor: pointer;
+  position: absolute;
+  bottom: .8em;
+  left: 1em;
+  transform: translateY(10px);
+  transition: transform .5s, color .3s;
+}
