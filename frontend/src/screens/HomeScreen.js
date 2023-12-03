@@ -46,55 +46,61 @@ const HomeScreen = {
   },
 };*/
 
-import data from '../data.js';
 const HomeScreen = {
-  renderNew: () => {
-    const { products } = data;
+  render: async () => {
+    const response = await fetch('http://localhost:5000/api/products', {
+      headers: {
+        'Content-Type':'application/json',
+      },
+    });
+    if (!response || !response.ok) {
+      return `<div>Error in getting data</div>`
+    }
+    const products = await response.json();
     const productsNew = products.filter(p => p.newSeason);
+    const productsOffer = products.filter(p => p.discount > 0);
     return `
-      <h2><img src="./assets/pokeball.svg"><span>Nueva temporada</span></h2>
-      <div class="cards-container cards-new">
-      ${productsNew.map(product => `
-        <div class="product-card">
-          <a href="./product-detail.html"><img src="${product.image}" alt="${product.name}"></a>
-          <div class="product-info">
-            <div>
-              <p>$${product.price}</p>
-              <p>${product.name}</p>
+      <section id="trends-container">
+        <h2><img src="./assets/pokeball.svg"><span>Nueva temporada</span></h2>
+        <div class="cards-container cards-new">
+        ${productsNew.map(product => `
+          <div class="product-card">
+            <a href="./#/product/${product._id}"><img src="${product.image}" alt="${product.name}"></a>
+            <div class="product-info">
+              <div>
+                <p>$${product.price}</p>
+                <p>${product.name}</p>
+              </div>
+              <figure>
+                <i class="fas fa-cart-plus"></i>
+              </figure>
             </div>
-            <figure>
-              <i class="fas fa-cart-plus"></i>
-            </figure>
           </div>
+        `).join('\n')}
         </div>
-      `).join('\n')}
-      </div>
-    `;
-  },
-  renderOffer: () => {
-    const { products } = data;
-    const productsOffer = products.filter(p => p.discount>0);
-    return `
-      <h2><img src="./assets/pokeball.svg"><span>Ofertas</span></h2>
-      <div class="cards-container cards-new">
-      ${productsOffer.map(product => `
-        <div class="product-card">
-          <a href="./product-detail.html">
-            <img src="${product.image}" alt="${product.name}">
-            <span>${product.discount}%</span>
-          </a>
-          <div class="product-info">
-            <div>
-              <p><small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}</p>
-              <p>${product.name}</p>
+      </section>
+      <section id="offers-container">
+        <h2><img src="./assets/pokeball.svg"><span>Ofertas</span></h2>
+        <div class="cards-container cards-new">
+        ${productsOffer.map(product => `
+          <div class="product-card">
+            <a href="./#/product/${product._id}">
+              <img src="${product.image}" alt="${product.name}">
+              <span>${product.discount}%</span>
+            </a>
+            <div class="product-info">
+              <div>
+                <p><small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}</p>
+                <p>${product.name}</p>
+              </div>
+              <figure>
+                <i class="fas fa-cart-plus"></i>
+              </figure>
             </div>
-            <figure>
-              <i class="fas fa-cart-plus"></i>
-            </figure>
           </div>
+        `).join('\n')}
         </div>
-      `).join('\n')}
-      </div>
+      </section>
     `;
   },
 };

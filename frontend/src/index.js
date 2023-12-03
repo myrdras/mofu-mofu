@@ -1,7 +1,8 @@
 import HomeScreen from './screens/HomeScreen.js';
-// import ProductScreen from './screens/ProductScreen';
+import ProductScreen from './screens/ProductScreen.js';
+import { parseRequestUrl } from './utils.js';
 // import { parseRequestUrl, showLoading, hideLoading } from './utils';
-// import Error404Screen from './screens/Error404Screen';
+import Error404Screen from './screens/Error404Screen.js';
 // import CartScreen from './screens/CartScreen';
 // import SigninScreen from './screens/SigninScreen';
 // import Header from './components/Header';
@@ -17,30 +18,41 @@ import HomeScreen from './screens/HomeScreen.js';
 // import OrderListScreen from './screens/OrderListScreen';
 // import Aside from './components/Aside';
 
-const router = () => {
-  const mainNew = document.getElementById('trends-container');
-  mainNew.innerHTML = HomeScreen.renderNew();
-  const mainOffer = document.getElementById('offers-container');
-  mainOffer.innerHTML = HomeScreen.renderOffer();
-}
-/*
 const routes = {
   '/': HomeScreen,
-  '/product/:id/edit': ProductEditScreen,
+  // '/product/:id/edit': ProductEditScreen,
   '/product/:id': ProductScreen,
-  '/order/:id': OrderScreen,
-  '/cart/:id': CartScreen,
-  '/cart': CartScreen,
-  '/signin': SigninScreen,
-  '/register': RegisterScreen,
-  '/profile': ProfileScreen,
-  '/shipping': ShippingScreen,
-  '/payment': PaymentScreen,
-  '/placeorder': PlaceOrderScreen,
-  '/dashboard': DashboardScreen,
-  '/productlist': ProductListScreen,
-  '/orderlist': OrderListScreen,
+  // '/order/:id': OrderScreen,
+  // '/cart/:id': CartScreen,
+  // '/cart': CartScreen,
+  // '/signin': SigninScreen,
+  // '/register': RegisterScreen,
+  // '/profile': ProfileScreen,
+  // '/shipping': ShippingScreen,
+  // '/payment': PaymentScreen,
+  // '/placeorder': PlaceOrderScreen,
+  // '/dashboard': DashboardScreen,
+  // '/productlist': ProductListScreen,
+  // '/orderlist': OrderListScreen,
 };
+
+const router = async () => {
+  const request = parseRequestUrl();
+  const parseUrl =
+    (request.resource ? `/${request.resource}` : '/') +
+    (request.id ? '/:id' : '') +
+    (request.verb ? `/${request.verb}` : '');
+  const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
+  const slide = document.querySelector('.splide');
+  const inHome = screen == HomeScreen;
+  const isInactive = slide.classList.contains('inactive');
+  if (inHome && isInactive) slide.classList.remove('inactive');
+  if (!inHome && !isInactive) slide.classList.add('inactive');
+
+  const main = document.getElementById('main-container');
+  main.innerHTML = await screen.render();
+}
+/*
 const router = async () => {
   showLoading();
   const request = parseRequestUrl();
@@ -64,4 +76,4 @@ const router = async () => {
   hideLoading();
 };*/
 window.addEventListener('load', router);
-// window.addEventListener('hashchange', router);
+window.addEventListener('hashchange', router);

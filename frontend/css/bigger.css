@@ -77,6 +77,10 @@ footer section:last-child {
     width: 240px;
     height: 240px;
   }
+  .product-card a span {
+    top: auto;
+    font-size: var(--sm);
+  }
   .product-card .product-info {
     justify-content: space-between;
     margin-top: 12px;

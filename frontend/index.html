@@ -7,19 +7,18 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/icon-32x32.png">
   
   <title>Mofu Mofu</title>
-  <!-- <link rel="icon" href="/new-home/icon.png?501c01c87786f6c0" type="image/png" sizes="192x192"> -->
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/bigger.css" media="(min-width: 600px)">
   <link rel="stylesheet" href="./css/nav.css">
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/product-detail.css">
+  <link rel="stylesheet" href="./css/bigger.css" media="(min-width: 600px)">
 
   <link rel="stylesheet" href="./css/splide-core.min.css">
   <script src="https://kit.fontawesome.com/869ea5569c.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <a href="./index.html"><img src="./assets/logo.svg" alt="logo" class="logo"></a>
+    <a href="./"><img src="./assets/logo.svg" alt="logo" class="logo"></a>
   </header>
 
   <nav>
@@ -32,7 +31,7 @@
           </form>
         </li>
         <li>
-          <a href="./index.html"><i class="fas fa-house"></i><span>Inicio</span></a>
+          <a href="./"><i class="fas fa-house"></i><span>Inicio</span></a>
         </li>
         <li id="categoryMenu"><i class="fas fa-list"></i><span>Categorias</span></li>
         <li class="navbar-shopping-cart">
@@ -44,6 +43,9 @@
     
     <div id="categoriesContainer" class="inactive">
       <ul>
+        <li><a href="">Todos</a></li>
+        <li><a href="">Ofertas</a></li>
+        <li><a href="">Nueva Temporada</a></li>
         <li><a href="">Llaveros</a></li>
         <li><a href="">Peluches</a></li>
         <li><a href="">Peluches Grandes</a></li>
@@ -100,10 +102,8 @@
       </div>
     </aside>
   </nav>
-
-  <div class="overlay inactive"></div>
-
-  <section class="slides-container splide" aria-label="carousel-heading">
+  
+  <section class="slides-container splide inactive" aria-label="carousel-heading">
     <div class="splide__track image-slides">
       <ul class="splide__list">
         <li class="splide__slide"><img src="./assets/hero1.jpg" alt="imagen"></li>
@@ -113,52 +113,13 @@
     </div>
   </section>
 
-  <section id="trends-container">
-    <h2><img src="./assets/pokeball.svg"><span>Nueva temporada</span></h2>
-    <div class="cards-container cards-new"></div>
-  </section>
-
-  <section id="offers-container">
-    <h2><img src="./assets/pokeball.svg"><span>Ofertas</span></h2>
-    <div class="cards-container cards-offer">
-      <div class="product-card">
-        <a href="./product-detail.html"><img src="./assets/imgs/slowbro.jpg" alt="imagen"></a>
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Slowbro</p>
-          </div>
-          <figure>
-            <i class="fas fa-cart-plus"></i>
-          </figure>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="./assets/imgs/gengar.jpg" alt="imagen">
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Gengar</p>
-          </div>
-          <figure>
-            <i class="fas fa-cart-plus"></i>
-          </figure>
-        </div>
-      </div>
-      <div class="product-card">
-        <img src="./assets/imgs/articuno.jpg" alt="imagen">
-        <div class="product-info">
-          <div>
-            <p>$120,00</p>
-            <p>Articuno</p>
-          </div>
-          <figure>
-            <i class="fas fa-cart-plus"></i>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main id="main-container">
+    <section id="trends-container"></section>
+  
+    <section id="offers-container"></section>
+  </main>
+  
+  <div class="overlay inactive"></div>
 
   <footer>
     <section class="subscribe">
@@ -208,11 +169,13 @@
     </section>
   </footer>
 
+  <script src="main.js"></script>
   <script src="./js/main.js"></script>
   <script src="./js/splide.min.js"></script>
-  <script>
-    new Splide( '.splide' , {
+  <script defer>
+    let splide = new Splide( '.splide' , {
       type    : 'loop',
+      arrows  : false,
       autoplay: true,
       interval: 5000,
       classes: {
@@ -220,6 +183,7 @@
         page      : 'splide__pagination__page dot',
       },
     }).mount();
+    splide.on( 'refresh', function () {});
   </script>
 </body>
 </html>
