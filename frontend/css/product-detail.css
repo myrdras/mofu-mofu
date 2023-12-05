@@ -11,23 +11,23 @@
 #productDetail .product-info {
   margin: 20px;
 }
-#productDetail .product-info p:nth-child(1) {
+#productDetail .product-info > p:nth-child(1) {
   margin-top: 0;
   margin-bottom: 4px;
   font-size: var(--lg);
   color: var(--letter-color);
 }
-#productDetail .product-info p:nth-child(2) {
+#productDetail .product-info > p:nth-child(2) {
   font-weight: bold;
   margin-top: 0;
   margin-bottom: 25px;
 }
-#productDetail .product-info p:nth-child(3) {
+#productDetail .product-info .product-description {
   margin-top: 0;
   margin-bottom: 20px;
-  color: var(--light-gray);
+  color: var(--text-input-field);
 }
-#productDetail .product-info p:nth-child(4) {
+#productDetail .product-info > p:nth-child(3) {
   font-size: var(--sm);
   margin-top: 0;
   margin-bottom: 20px;
@@ -54,10 +54,10 @@
 .cp .inputGroup {
   margin: auto;
 }
-#productDetail p:last-child a {
+#productDetail > p:last-child a {
   text-decoration: underline;
 }
-#productDetail p:last-child {
+#productDetail > p:last-child {
   margin-top: .5em;
   padding-left: 1em;
 }

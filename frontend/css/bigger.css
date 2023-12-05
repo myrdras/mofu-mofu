@@ -18,7 +18,13 @@ h2 {
 aside {
   width: 400px;
 }
-
+#productDetail {
+  display: flex;
+}
+#productDetail > img:nth-child(1) {
+  width: 50%;
+  max-width: 600px;
+}
 #productDetail > img:nth-child(2) {
   height: 360px;
 }
@@ -63,6 +69,9 @@ footer section:last-child {
   }
   #categoriesContainer {
     left: calc(50% + 7vw);
+  }
+  #productDetail > img:nth-child(1) {
+    max-width: 800px;
   }
   .cards-container {
     grid-template-columns: repeat(auto-fill, 240px);

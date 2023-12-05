@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   products: [
     {
       _id: '111111111111111111111111',
@@ -6,6 +6,7 @@ module.exports = {
       category: 'Peluches Pikachu',
       image: './assets/bg-gray.jpg',
       price: 120,
+      description: '* Pikachu llegó otra vez de una forma diferente listo para acompañar tu escritorio, repisa o donde quieras un poco de alegría.\n* Peluche suave de poliéster / espuma de poliuretano.\n* Instrucciones de cuidado: Lavar a mano.',
       countInStock: 6,
       newSeason: true,
       discount: 0,
@@ -16,6 +17,7 @@ module.exports = {
       category: 'Peluches',
       image: './assets/bg-gray.jpg',
       price: 100,
+      description: '* ¡Esponjoso y esponjosito! Peluches suavecitos para no parar de abrazarlos.\n* Peluche de poliéster/ polietileno.\n* Instrucciones de cuidado: Lavar a mano.',
       countInStock: 9,
       newSeason: true,
       discount: 0,
@@ -23,9 +25,10 @@ module.exports = {
     {
       _id: '3',
       name: 'Mew',
-      category: 'Llavero',
+      category: 'Llaveros',
       image: './assets/bg-gray.jpg',
       price: 150,
+      description: '* Peluche ideal para llevarlo en tu bolso, mochila o llaves  te va a acompañar a donde quieras que vayas.\n* Peluche hecho de poliéster / espuma de poliuretano.\n* Instrucciones de cuidado : Lavar únicamente la superficie.',
       countInStock: 16,
       newSeason: true,
       discount: 0,
@@ -36,6 +39,7 @@ module.exports = {
       category: 'Sitting Cutties',
       image: './assets/imgs/slowbro.jpg',
       price: 120,
+      description: '* Peluche hecho de poliéster/polietileno/espuma de poliuretano y relleno de microperlas, haciendo que pueda estar sentado en una superficie plana.\n* Peluche del tamaño de la palma de una mano.\n* Instrucciones de cuidado: Lavar a mano.',
       countInStock: 16,
       newSeason: false,
       discount: 10,
@@ -46,6 +50,7 @@ module.exports = {
       category: 'Sitting Cutties',
       image: './assets/imgs/gengar.jpg',
       price: 180,
+      description: '* Peluche hecho de poliéster/polietileno/espuma de poliuretano y relleno de microperlas, haciendo que pueda estar sentado en una superficie plana.\n* Peluche del tamaño de la palma de una mano.\n* Instrucciones de cuidado: Lavar a mano.',
       countInStock: 16,
       newSeason: false,
       discount: 50,
@@ -56,6 +61,7 @@ module.exports = {
       category: 'Sitting Cutties',
       image: './assets/imgs/articuno.jpg',
       price: 100,
+      description: '* Peluche hecho de poliéster/polietileno/espuma de poliuretano y relleno de microperlas, haciendo que pueda estar sentado en una superficie plana.\n* Peluche del tamaño de la palma de una mano.\n* Instrucciones de cuidado: Lavar a mano.',
       countInStock: 16,
       newSeason: false,
       discount: 15,

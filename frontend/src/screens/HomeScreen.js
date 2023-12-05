@@ -1,62 +1,37 @@
-/*import Rating from '../components/Rating';
-import { getProducts } from '../api';
-import { parseRequestUrl } from '../utils';
+import axios from 'axios';
+import { getProduct } from "../api";
+import { addToCart } from '../cart';
 
 const HomeScreen = {
-  render: async () => {
-    const { value } = parseRequestUrl();
-    const products = await getProducts({ searchKeyword: value });
-    if (products.error) {
-      return `<div class="error">${products.error}</div>`;
+  after_render: () => {
+    const btns = document.querySelectorAll('#addBtn');
+    if (btns) {
+      btns.forEach(async btn => {
+        const product = await getProduct(btn.getAttribute('value'));
+        btn.addEventListener('click', () => {
+          addToCart({
+            product: product._id,
+            name: product.name,
+            image: product.image,
+            price: product.price,
+            countInStock: product.countInStock,
+            qty: 1,
+          });
+        });
+      });
     }
-
-    return `
-    <ul class="products">
-      ${products
-        .map(
-          (product) => `
-      <li>
-        <div class="product">
-          <a href="/#/product/${product._id}">
-            <img src="${product.image}" alt="${product.name}" />
-          </a>
-        <div class="product-name">
-          <a href="/#/product/1">
-            ${product.name}
-          </a>
-        </div>
-        <div class="product-rating">
-          ${Rating.render({
-            value: product.rating,
-            text: `${product.numReviews} reviews`,
-          })}
-        </div>
-        <div class="product-brand">
-          ${product.brand}
-        </div>
-        <div class="product-price">
-          $${product.price}
-        </div>
-        </div>
-      </li>
-      `
-        )
-        .join('\n')}
-    `;
   },
-};*/
-
-const HomeScreen = {
   render: async () => {
-    const response = await fetch('http://localhost:5000/api/products', {
+    const response = await axios({
+      url: 'http://localhost:5000/api/products',
       headers: {
         'Content-Type':'application/json',
       },
     });
-    if (!response || !response.ok) {
+    if (!response || response.statusText !== 'OK') {
       return `<div>Error in getting data</div>`
     }
-    const products = await response.json();
+    const products = response.data;
     const productsNew = products.filter(p => p.newSeason);
     const productsOffer = products.filter(p => p.discount > 0);
     return `
@@ -72,7 +47,7 @@ const HomeScreen = {
                 <p>${product.name}</p>
               </div>
               <figure>
-                <i class="fas fa-cart-plus"></i>
+                <i id="addBtn" class="fas fa-cart-plus" value="${product._id}"></i>
               </figure>
             </div>
           </div>
@@ -94,7 +69,7 @@ const HomeScreen = {
                 <p>${product.name}</p>
               </div>
               <figure>
-                <i class="fas fa-cart-plus"></i>
+                <i id="addBtn" class="fas fa-cart-plus" value="${product._id}"></i>
               </figure>
             </div>
           </div>
