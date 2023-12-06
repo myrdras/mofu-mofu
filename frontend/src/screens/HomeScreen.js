@@ -14,6 +14,7 @@ const HomeScreen = {
             name: product.name,
             image: product.image,
             price: product.price,
+            discount: product.discount,
             countInStock: product.countInStock,
             qty: 1,
           });

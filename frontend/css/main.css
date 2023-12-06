@@ -196,6 +196,10 @@ header {
   font-size: var(--lg);
   cursor: pointer;
 }
+.product-card .product-info figure i:hover,
+.product-card .product-info figure i:active {
+  color: var(--highlight-color);
+}
 .product-card .product-info div p:nth-child(1) {
   font-weight: bold;
   font-size: var(--md);

@@ -14,6 +14,7 @@ const ProductScreen = {
           name: product.name,
           image: product.image,
           price: product.price,
+          discount: product.discount,
           countInStock: product.countInStock,
           qty: 1,
         });
@@ -38,7 +39,7 @@ const ProductScreen = {
           <div class="product-description">${(product.description.split('\n').map(d=>`<p>${d}</p>`).join('\n'))}
             <p>* Original Pokémon Center</p>
           </div>
-          <p><i class="far fa-credit-card"></i> 12 cuotas $${product.price / 12}</p>
+          <p><i class="far fa-credit-card"></i> 12 cuotas sin interes $${(product.price / 12).toFixed(2)}</p>
           <button id="addBtn" class="primary-button add-to-cart-button"><i class="fas fa-cart-plus"></i> Agregar</button>
         </div>
       </section>

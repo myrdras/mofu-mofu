@@ -7,13 +7,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/icon-32x32.png">
   
   <title>Mofu Mofu</title>
+  <link rel="stylesheet" href="./css/splide-core.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/nav.css">
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/product-detail.css">
   <link rel="stylesheet" href="./css/bigger.css" media="(min-width: 600px)">
 
-  <link rel="stylesheet" href="./css/splide-core.min.css">
   <script src="https://kit.fontawesome.com/869ea5569c.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -23,22 +25,6 @@
 
   <nav>
     <div class="main-navbar">
-      <ul>
-        <li class="search-bar">
-          <form action="" method="get">
-            <input class="search" id="searchleft" type="text" name="q" placeholder="Buscar">
-            <label class="search-button" for="searchleft"><i class="fas fa-magnifying-glass"></i><span>Lupa</span></label>
-          </form>
-        </li>
-        <li>
-          <a href="/#/"><i class="fas fa-house"></i><span>Inicio</span></a>
-        </li>
-        <li id="categoryMenu"><i class="fas fa-list"></i><span>Categorias</span></li>
-        <li class="navbar-shopping-cart">
-          <i class="fas fa-cart-shopping"></i>
-          <div>1</div>
-        </li>
-      </ul>
     </div>
     
     <div id="categoriesContainer" class="inactive">
@@ -55,51 +41,6 @@
     </div>
 
     <aside id="shoppingCartContainer" class="inactive">
-      <!-- <div class="title-container">
-        <i class="fas fa-angle-left"></i>
-        <p class="title">Mi orden</p>
-      </div>
-
-      <div class="my-order-content">
-        <div class="cart-items">
-          <div class="shopping-cart">
-            <figure>
-              <img src="./assets/bg-gray.jpg" alt="Pikachu">
-            </figure>
-            <p>Pikachu</p>
-            <p>x1</p>
-            <p>$30,00</p>
-            <i class="fas fa-xmark"></i>
-          </div>
-    
-          <div class="shopping-cart">
-            <figure>
-              <img src="./assets/bg-gray.jpg" alt="Pikachu">
-            </figure>
-            <p>Pikachu</p>
-            <p>x1</p>
-            <p>$30,00</p>
-            <i class="fas fa-xmark"></i>
-          </div>
-    
-          <div class="shopping-cart">
-            <figure>
-              <img src="./assets/bg-gray.jpg" alt="Pikachu">
-            </figure>
-            <p>Pikachu</p>
-            <p>x1</p>
-            <p>$30,00</p>
-            <i class="fas fa-xmark"></i>
-          </div>
-        </div>
-
-        <div class="order">
-          <p>Total</p>
-          <p>$560.00</p>
-        </div>
-
-        <button class="primary-button">Ir al carrito</button>
-      </div> -->
     </aside>
   </nav>
   
@@ -170,8 +111,8 @@
     </section>
   </footer>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="main.js"></script>
-  <script src="./js/main.js"></script>
   <script src="./js/splide.min.js"></script>
   <script defer>
     let splide = new Splide( '.splide' , {

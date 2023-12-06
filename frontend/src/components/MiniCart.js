@@ -1,13 +1,13 @@
 import { getCartItems } from '../localStorage';
 import { removeFromCart } from '../cart';
 
-const MiniCartScreen = {
+const MiniCart = {
   after_render: () => {
-    const deleteBtns = document.querySelectorAll('.fa-xmark');
-    if (deleteBtns.length > 0) {
-      deleteBtns.forEach((deleteBtn) => {
-        deleteBtn.addEventListener('click', () => {
-          removeFromCart(deleteBtn.getAttribute('value'));
+    const delBtns = document.querySelectorAll('.fa-xmark');
+    if (delBtns.length > 0) {
+      delBtns.forEach((delBtn) => {
+        delBtn.addEventListener('click', () => {
+          removeFromCart(delBtn.getAttribute('value'));
         });
       });
       document.getElementById('miniCartBtn').addEventListener('click', () => {
@@ -24,7 +24,7 @@ const MiniCartScreen = {
       </div>
 
       ${cartItems.length === 0
-        ? '<div>El carrito está vacio.</div>'
+        ? '<div>El carrito de compras está vacio.</div>'
         : `
       <div class="my-order-content">
         <div class="cart-items">
@@ -33,17 +33,17 @@ const MiniCartScreen = {
             <figure>
               <img src="${item.image}" alt="${item.name}">
             </figure>
-            <p>${item.name}</p>
-            <p>x${item.qty}</p>
-            <p>$${item.price}</p>
+            <p class="name">${item.name}</p>
+            <p class="qty">x${item.qty}</p>
+            <p class="price">$${item.price}</p>
             <i class="fas fa-xmark" value="${item.product}"></i>
           </div>
         `).join('\n') + `
         </div>
 
         <div class="order">
-          <p>Subtotal</p>
-          <p>$${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
+          <p class="order-title">Subtotal</p>
+          <p class="order-price">$${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</p>
         </div>
 
         <button id="miniCartBtn" class="primary-button">Ir al carrito</button>
@@ -53,4 +53,4 @@ const MiniCartScreen = {
     `;
   },
 };
-export default MiniCartScreen;
+export default MiniCart;

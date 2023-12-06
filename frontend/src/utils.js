@@ -7,7 +7,7 @@ export const parseRequestUrl = () => {
     verb: request[3],
   };
 }
-export const rerender = async (component, tag='main-container') => {
-  document.getElementById(tag).innerHTML = await component.render();
+export const rerender = async (component, tag='#main-container') => {
+  document.querySelector(tag).innerHTML = await component.render();
   await component.after_render();
 };
