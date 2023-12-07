@@ -43,21 +43,3 @@
   font-weight: bold;
   height: 50px;
 }
-.cp {
-  display: flex;
-  margin-top: 1.5em;
-  padding: 10px 15px;
-  gap: 1em;
-  border-radius: 10px;
-  background-color: #f7f7f7;
-}
-.cp .inputGroup {
-  margin: auto;
-}
-#productDetail > p:last-child a {
-  text-decoration: underline;
-}
-#productDetail > p:last-child {
-  margin-top: .5em;
-  padding-left: 1em;
-}

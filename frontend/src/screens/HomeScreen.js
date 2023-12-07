@@ -62,7 +62,7 @@ const HomeScreen = {
           <div class="product-card">
             <a href="./#/product/${product._id}">
               <img src="${product.image}" alt="${product.name}">
-              <span>${product.discount}%</span>
+              <span class="discount">${product.discount}%</span>
             </a>
             <div class="product-info">
               <div>

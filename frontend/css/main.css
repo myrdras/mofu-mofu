@@ -78,6 +78,9 @@ aside {
   background-color: var(--white);
   z-index: 2;
 }
+figure {
+  position: relative;
+}
 
 /* Header */
 header {
@@ -162,14 +165,15 @@ header {
 .product-card a {
   position: relative;
 }
-.product-card a span {
+.discount {
   position: absolute;
   padding: 2px 4px;
+  padding-bottom: 0;
   font-size: 14px;
   top: 0;
   right: 0;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 14px;
   background-color: #ff0000;
   color: white;
 }
@@ -211,4 +215,58 @@ header {
   margin-top: 0;
   margin-bottom: 0;
   color: var(--light-gray);
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--letter-color);
+  font-size: var(--lg);
+  margin: 0 0 .75em 0;
+}
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--letter-color);
+}
+.separator:not(:empty)::before {
+  margin-right: .25em;
+}
+.separator:not(:empty)::after {
+  margin-left: .25em;
+}
+.separator img {
+  height: 1.25em;
+  padding-right: .5em;
+}
+
+/* FAQ */
+.faq div {
+  margin-top: 1em;
+}
+.faq div p:first-child {
+  display: list-item;
+  margin-left: .5em;
+  padding-left: .5em;
+  list-style-type: '-';
+  font-weight: bold;
+}
+
+/* About */
+.about div p {
+  margin-top: 1em;
+}
+
+/* Returns */
+.returns div {
+  margin-top: 1em;
+}
+.returns .primary-button {
+  font-size: inherit;
+  font-weight: inherit;
+  width: auto;
+  height: auto;
+  padding: 5px 10px;
 }

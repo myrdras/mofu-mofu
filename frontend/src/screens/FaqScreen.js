@@ -2,6 +2,7 @@ const FaqScreen = {
   render: () => {
     return `
       <section class="faq">
+        <div class="separator"><img src="./assets/ico.svg" alt="">Preguntas Frecuentes</div>
         <div>
           <p>¿Puede otra persona retirar el pedido que hice por mí o puedo enviar una moto?</p>
           <p>Siempre! Solo tenés que detallarlo en la sección de notas y dejarnos el nombre de quién lo retira.</p>

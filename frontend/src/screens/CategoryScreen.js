@@ -46,10 +46,13 @@ const CategoryScreen = {
         <div class="cards-container cards-new">
           ${products.map(product => `
           <div class="product-card">
-            <a href="./#/product/${product._id}"><img src="${product.image}" alt="${product.name}"></a>
+            <a href="./#/product/${product._id}">
+              <img src="${product.image}" alt="${product.name}">
+              ${product.discount>0?`<span class="discount">${product.discount}%</span>`:""}
+            </a>
             <div class="product-info">
               <div>
-                <p>$${product.price}</p>
+                <p>${product.discount>0?`<small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}`:`$${product.price}`}</p>
                 <p>${product.name}</p>
               </div>
               <figure>

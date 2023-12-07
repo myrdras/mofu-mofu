@@ -69,16 +69,15 @@ nav {
   position: relative;
 }
 .navbar-shopping-cart div {
-  width: 16px;
   height: 16px;
+  padding: 0 5px;
   color: var(--white);
   background-color: var(--highlight-color);
   border-radius: 50%;
   font-size: 14px;
-  font-weight: bold;
   position: absolute;
   top: -4px;
-  right: -4px;
+  right: -10px;
   display: flex;
   justify-content: center;
 }
@@ -109,6 +108,12 @@ nav {
   padding-bottom: 20px;
   padding-top: 0;
 }
+#shoppingCartContainer .discount {
+  font-size: 10px;
+  border-radius: 10px;
+  padding-bottom: 0;
+}
+
 .title-container {
   display: flex;
   padding-left: 10px;
@@ -174,6 +179,9 @@ nav {
   overflow-x: auto;
   margin-right: -20px;
 }
+.cart-container {
+  max-width: 800px;
+}
 .cart-container .my-order-content {
   padding: 0;
 }
@@ -186,4 +194,35 @@ nav {
 }
 .cart-container .details {
   grid-column: 3;
+}
+.plus-minus {
+  display: flex;
+  margin-top: .5em;
+}
+.plus-minus input {
+  width: 3em;
+  text-align: center;
+}
+.cp-container {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+.cp {
+  display: flex;
+  width: 210px;
+  padding: 10px 15px;
+  gap: 1em;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+}
+.cp .inputGroup {
+  margin: auto;
+}
+.link-cp a {
+  text-decoration: underline;
+}
+.link-cp {
+  margin-bottom: .5em;
+  padding-left: 1em;
 }

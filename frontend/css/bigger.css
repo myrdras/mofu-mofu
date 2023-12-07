@@ -45,6 +45,10 @@ aside {
   font-size: 35px;
 }
 
+.separator {
+  font-size: 30px;
+}
+
 /* Footer */
 footer {
   display: flex;
@@ -73,6 +77,9 @@ footer section:last-child {
   #productDetail > img:nth-child(1) {
     max-width: 800px;
   }
+  .cart-container {
+    margin: 30px auto;
+  }
   .cards-container {
     grid-template-columns: repeat(auto-fill, 240px);
     gap: 26px;
@@ -86,7 +93,7 @@ footer section:last-child {
     width: 240px;
     height: 240px;
   }
-  .product-card a span {
+  .product-card a .discount {
     top: auto;
     font-size: var(--sm);
   }

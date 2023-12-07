@@ -19,7 +19,7 @@ const Nav = {
         <li id="categoryMenu"><i class="fas fa-list"></i><span>Categorias</span></li>
         <li class="navbar-shopping-cart">
           <i class="fas fa-cart-shopping"></i>
-          <div>${cartItems.length}</div>
+          <div>${cartItems.reduce((a, c) => a + c.qty, 0)}</div>
         </li>
       </ul>
     `;
