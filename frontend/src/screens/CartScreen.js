@@ -106,11 +106,17 @@ const CartScreen = {
               <div class="inputGroup">
                 <input type="text" name="name" id="name" placeholder="Código Postal" required />
               </div>
-              <p>Calcular</p>
+              <input class="cp-btn" type="submit" value="Calcular">
             </div>
             <p class="link-cp"><a href="https://www.correoargentino.com.ar/formularios/cpa" target="_blank">No se mi código postal</a></p>
           </div>
+          <div class="shipping-form"></div>
+          <div class="order">
+            <p class="order-title">Total</p>
+            <p class="order-price">$${cartSubtotal - cartDiscount}</p>
+          </div>
           <button id="purchase" class="primary-button">Iniciar compra</button>
+          <p class="link-cp"><a href="/#/categoria/todos">Ver mas productos</a></p>
         `}
         </div>
       </section>

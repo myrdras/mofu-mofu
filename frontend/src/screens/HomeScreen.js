@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { getProduct } from "../api";
-import { addToCart } from '../cart';
+import { getProduct, getAllProducts } from "../api";
+import { addToCart, addAlert, maxAlert } from '../cart';
+import { getCartItems } from '../localStorage';
 
 const HomeScreen = {
   after_render: () => {
@@ -9,30 +9,29 @@ const HomeScreen = {
       btns.forEach(async btn => {
         const product = await getProduct(btn.getAttribute('value'));
         btn.addEventListener('click', () => {
-          addToCart({
-            product: product._id,
-            name: product.name,
-            image: product.image,
-            price: product.price,
-            discount: product.discount,
-            countInStock: product.countInStock,
-            qty: 1,
-          });
+          const cartItems = getCartItems();
+          const existItem = cartItems.find((x) => x.product === product._id);
+          const newQty = existItem ? Number(existItem.qty) : 0;
+          if (newQty < product.countInStock) {
+            addToCart({
+              product: product._id,
+              name: product.name,
+              image: product.image,
+              price: product.price,
+              discount: product.discount,
+              countInStock: product.countInStock,
+              qty: newQty + 1,
+            });
+            addAlert();
+          } else {
+            maxAlert();
+          }
         });
       });
     }
   },
   render: async () => {
-    const response = await axios({
-      url: 'http://localhost:5000/api/products',
-      headers: {
-        'Content-Type':'application/json',
-      },
-    });
-    if (!response || response.statusText !== 'OK') {
-      return `<div>Error in getting data</div>`
-    }
-    const products = response.data;
+    const products = await getAllProducts({});
     const productsNew = products.filter(p => p.newSeason);
     const productsOffer = products.filter(p => p.discount > 0);
     return `

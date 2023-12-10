@@ -75,7 +75,7 @@ footer section:last-child {
     left: calc(50% + 7vw);
   }
   #productDetail > img:nth-child(1) {
-    max-width: 800px;
+    max-width: 600px;
   }
   .cart-container {
     margin: 30px auto;

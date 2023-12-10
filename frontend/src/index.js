@@ -1,4 +1,6 @@
 import HomeScreen from './screens/HomeScreen.js';
+import MiniCart from './components/MiniCart.js';
+import Nav from './components/Nav.js';
 import ProductScreen from './screens/ProductScreen.js';
 import CategoryScreen from './screens/CategoryScreen.js';
 import FaqScreen from './screens/FaqScreen.js';
@@ -7,8 +9,14 @@ import ReturnsScreen from './screens/ReturnsScreen.js';
 import { parseRequestUrl } from './utils.js';
 import Error404Screen from './screens/Error404Screen.js';
 import CartScreen from './screens/CartScreen.js';
-import MiniCart from './components/MiniCart.js';
-import Nav from './components/Nav.js';
+import ShippingScreen from './screens/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import SigninScreen from './screens/SigninScreen';
+import DashboardScreen from './screens/DashboardScreen';
+import ProductListScreen from './screens/ProductListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
+import OrderListScreen from './screens/OrderListScreen';
 
 const routes = {
   '/': HomeScreen,
@@ -18,6 +26,14 @@ const routes = {
   '/quienes-somos': AboutScreen,
   '/devoluciones': ReturnsScreen,
   '/carrito': CartScreen,
+  '/entrega': ShippingScreen,
+  '/pago': PaymentScreen,
+  '/ingresar-orden': PlaceOrderScreen,
+  '/signin': SigninScreen,
+  '/dashboard': DashboardScreen,
+  '/productlist': ProductListScreen,
+  '/product/:id/edit': ProductEditScreen,
+  '/orderlist': OrderListScreen,
 };
 
 const router = async () => {

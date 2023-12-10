@@ -11,3 +11,6 @@ export const rerender = async (component, tag='#main-container') => {
   document.querySelector(tag).innerHTML = await component.render();
   await component.after_render();
 };
+export const redirectUser = () => {
+  document.location.hash = '/dashboard';
+};

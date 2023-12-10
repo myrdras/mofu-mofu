@@ -1,7 +1,7 @@
 import { parseRequestUrl } from "../utils";
-import { getProduct } from "../api";
-import { addToCart } from '../cart';
-import { getCategory, getAllProducts } from "../api";
+import { getProduct, getCategory, getAllProducts } from "../api";
+import { addToCart, addAlert, maxAlert } from '../cart';
+import { getCartItems } from '../localStorage';
 
 function convertToTitleCase(str) {
   if (!str) { return "" }
@@ -15,15 +15,23 @@ const CategoryScreen = {
       btns.forEach(async btn => {
         const product = await getProduct(btn.getAttribute('value'));
         btn.addEventListener('click', () => {
-          addToCart({
-            product: product._id,
-            name: product.name,
-            image: product.image,
-            price: product.price,
-            discount: product.discount,
-            countInStock: product.countInStock,
-            qty: 1,
-          });
+          const cartItems = getCartItems();
+          const existItem = cartItems.find((x) => x.product === product._id);
+          const newQty = existItem ? Number(existItem.qty) : 0;
+          if (newQty < product.countInStock) {
+            addToCart({
+              product: product._id,
+              name: product.name,
+              image: product.image,
+              price: product.price,
+              discount: product.discount,
+              countInStock: product.countInStock,
+              qty: newQty + 1,
+            });
+            addAlert();
+          } else {
+            maxAlert();
+          }
         });
       });
     }
@@ -31,7 +39,7 @@ const CategoryScreen = {
   render: async () => {
     const request = parseRequestUrl();
     const cat = convertToTitleCase(request.id);
-    const allProducts = await getAllProducts();
+    const allProducts = await getAllProducts({});
     const products = cat=='Todos'
       ? allProducts
       : cat=='Ofertas'
