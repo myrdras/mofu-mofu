@@ -8,6 +8,7 @@ import AboutScreen from './screens/AboutScreen.js';
 import ReturnsScreen from './screens/ReturnsScreen.js';
 import { parseRequestUrl } from './utils.js';
 import Error404Screen from './screens/Error404Screen.js';
+import SearchScreen from './screens/SearchScreen.js';
 import CartScreen from './screens/CartScreen.js';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
@@ -20,6 +21,7 @@ import OrderListScreen from './screens/OrderListScreen';
 
 const routes = {
   '/': HomeScreen,
+  '/buscar': SearchScreen,
   '/product/:id': ProductScreen,
   '/categoria/:id': CategoryScreen,
   '/preguntas-frecuentes': FaqScreen,

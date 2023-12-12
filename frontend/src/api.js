@@ -42,6 +42,24 @@ export const getProduct = async (id) => {
     return { error: err.response.data.message || err.message };
   }
 }
+export const getProductBySlug = async (id) => {
+  try {
+    const res = await axios({
+      url: `${apiUrl}/api/products/slug/${id}`,
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    if (res.statusText !== 'OK') {
+      throw new Error(res.data.message);
+    }
+    return res.data;
+  } catch (err) {
+    console.log(err);
+    return { error: err.response.data.message || err.message };
+  }
+}
 
 export const createProduct = async () => {
   try {

@@ -13,6 +13,7 @@ const ProductEditScreen = {
       .getElementById('edit-product-form')
       .addEventListener('submit', async (e) => {
         e.preventDefault();
+        const selectCat = document.getElementById('category');
         //showLoading();
         const data = await updateProduct({
           _id: request.id,
@@ -20,7 +21,7 @@ const ProductEditScreen = {
           price: document.getElementById('price').value,
           image: document.getElementById('image').value,
           discount: document.getElementById('discount').value,
-          category: document.getElementById('category').value,
+          category: selectCat.options[selectCat.selectedIndex].value,
           countInStock: document.getElementById('countInStock').value,
           newSeason: document.querySelector( 'input[name="newSeason"]:checked').value,
           description: document.getElementById('description').value,
@@ -57,7 +58,7 @@ const ProductEditScreen = {
     const product = await getProduct(request.id);
     return `
     <div class="content">
-      <div>
+      <div class="form-return">
         <a href="/#/productlist">Back to products</a>
       </div>
       <div class="form-container">
@@ -67,19 +68,19 @@ const ProductEditScreen = {
               <h1>Edit Product ${product._id.substring(0, 8)}</h1>
             </li>
             <li>
-              <label for="name">Name</label>
+              <label for="name">Nombre</label>
               <input type="text" name="name" value="${
                 product.name
               }" id="name" />
             </li>
             <li>
-              <label for="price">Price</label>
+              <label for="price">Precio</label>
               <input type="number" name="price" value="${
                 product.price
-              }" id="price" />
+              }" id="price" min="0" />
             </li>
             <li>
-              <label for="image">Image (680 x 830)</label>
+              <label for="image">Imagen (1156 x 1165)</label>
               <input type="text" name="image" value="${
                 product.image
               }" id="image" />
@@ -89,39 +90,57 @@ const ProductEditScreen = {
               <label for="discount">Descuento</label>
               <input type="number" name="discount" value="${
                 product.discount
-              }" id="discount" />
+              }" id="discount" min="0" />
             </li>
             <li>
-              <label for="countInStock">Count In Stock</label>
-              <input type="text" name="countInStock" value="${
+              <label for="countInStock">En Stock</label>
+              <input type="number" name="countInStock" value="${
                 product.countInStock
-              }" id="countInStock" />
+              }" id="countInStock" min="0" />
             </li>
             <li>
-              <label for="category">Category</label>
-              <input type="text" name="category" value="${
-                product.category
-              }" id="category" />
+              <label for="category">Categoria</label>
+              <select name="category" id="category">
+                <option value="Llaveros" ${
+                  product.category=='Llaveros'? "selected":""
+                }>Llaveros</option>
+                <option value="Peluches" ${
+                  product.category=='Peluches'? "selected":""
+                }>Peluches</option>
+                <option value="Peluches Grandes" ${
+                  product.category=='Peluches Grandes'? "selected":""
+                }>Peluches Grandes</option>
+                <option value="Peluches Pikachu" ${
+                  product.category=='Peluches Pikachu'? "selected":""
+                }>Peluches Pikachu</option>
+                <option value="Sitting Cutties" ${
+                  product.category=='Sitting Cutties'? "selected":""
+                }>Sitting Cutties</option>
+              </select>
             </li>
             <li>
               <label for="newSeason">Nueva temporada</label>
-              <input type="radio" id="si" name="newSeason" value="true" ${
-                product.newSeason? "checked":""
-              }>
-              <label for="si">Si</label><br>
-              <input type="radio" id="no" name="newSeason" value="false" ${
-                product.newSeason? "":"checked"
-              }>
-              <label for="no">No</label>
+              <div>
+                <input type="radio" id="si" name="newSeason" value="true" ${
+                  product.newSeason? "checked":""
+                }>
+                <label for="si">Si</label><br>
+              </div>
+              <div>
+                <input type="radio" id="no" name="newSeason" value="false" ${
+                  product.newSeason? "":"checked"
+                }>
+                <label for="no">No</label>
+              </div>
             </li>
             <li>
-              <label for="description">Description</label>
-              <input type="text" name="description" value="${
+              <label for="description">Descripción</label>
+              <textarea type="text" name="description" id="description" rows="5" >${
                 product.description
-              }" id="description" />
+              }</textarea>
             </li>
             <li>
-              <button type="submit" class="primary">Update</button>
+              <button type="submit" class="primary-button">Actualizar</button>
             </li>
           </ul>
         </form>

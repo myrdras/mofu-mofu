@@ -27,6 +27,13 @@ productRouter.get(
     res.send(product);
   })
 );
+productRouter.get(
+  '/slug/:id',
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.find({slug: req.params.id});
+    res.send(product[0]);
+  })
+);
 
 productRouter.post(
   '/',
@@ -37,7 +44,7 @@ productRouter.post(
       name: 'Sample Product',
       image: './assets/bg-gray.jpg',
       description: 'sample desc',
-      category: 'sample category',
+      category: 'Peluches',
       slug: 'sample-product',
     });
     let count = await Product.countDocuments({ slug: new RegExp(`${product.slug}-\\d+$`) })+1;
@@ -68,6 +75,14 @@ productRouter.put(
       product.price = req.body.price;
       product.countInStock = req.body.countInStock;
       product.discount = req.body.discount;
+      product.slug = slugify(req.body.name, { strict: true, lower: true });
+      const originalSlug = product.slug;
+      let count = 0;
+      let slugExist = await Product.countDocuments({ slug: product.slug });
+      while (slugExist) {
+        product.slug = `${originalSlug}-${count++}`;
+        slugExist = await Product.countDocuments({ slug: product.slug });
+      }
       const updatedProduct = await product.save();
       if (updatedProduct) {
         res.send({ message: 'Product Updated', product: updatedProduct });

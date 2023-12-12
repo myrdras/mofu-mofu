@@ -20,20 +20,30 @@ nav {
   margin-right: 5px;
   display: flex;
   align-items: center;
-  height: 60px;
   justify-content: space-between;
 }
-.main-navbar ul li {
-  color: var(--letter-color);
-  border: 1px solid var(--white);
+.main-navbar > ul > li {
+  padding: .6em 0;
+}
+.main-navbar > ul > li > :first-child {
   padding: 8px;
   border-radius: 8px;
+  color: var(--letter-color);
+  border: 1px solid var(--white);
   cursor: pointer;
 }
-.main-navbar ul li:hover,
-.main-navbar .tag-hover {
+.main-navbar > ul > li a {
+  display: inline-block;
+}
+.main-navbar > ul > li > :first-child:hover,
+.main-navbar > ul > li > :first-child:active,
+.main-navbar > ul > li > :first-child.tag-hover {
   border: 1px solid var(--highlight-color);
   color: var(--highlight-color);
+}
+.main-navbar ul li ul li {
+  clear: both;
+  width: 100%;
 }
 .main-navbar .search-bar {
   width: calc(24px + 3.22em);
@@ -54,8 +64,6 @@ nav {
 	position: absolute;
 	left: 32px;
   width: 0;
-  top: 0;
-	height: 100%;
   background-color: var(--white);
 	transition-duration: 0.4s;
 	-moz-transition-duration: 0.4s;
@@ -76,23 +84,45 @@ nav {
   border-radius: 50%;
   font-size: 14px;
   position: absolute;
-  top: -4px;
-  right: -10px;
+  top: 5px;
+  right: -5px;
   display: flex;
   justify-content: center;
 }
 
 /* Categories */
 #categoriesContainer {
+  display: none;
+  visibility: hidden;
   position: absolute;
+  height: auto;
+  margin-left: -0.75em;
+  margin-top: calc(.6em + 1px);
+  color: var(--letter-color);
   background-color: var(--white);
   border-radius: 0 0 10px 10px;
-  color: var(--letter-color);
-  left: calc(50% - 10px);
-  box-shadow: 0 0 10px 5px rgb(0, 0, 0, .3);
+  box-shadow: 10px 0px 10px -3px rgb(0, 0, 1, .3), 0px 10px 10px -3px rgb(0, 0, 0, .3), -10px 0px 10px -3px rgb(0, 0, 0, .3);
+    transition: all 0.5s ease;
+}
+.main-navbar ul li:hover > #categoriesContainer,
+.main-navbar ul li:focus > #categoriesContainer,
+.main-navbar ul li #categoriesContainer:hover,
+.main-navbar ul li #categoriesContainer:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block
+}
+#categoriesContainer a {
+  display: inline-block;
+  width: 100%;
+  padding: 5px 15px;
 }
 #categoriesContainer li {
-  padding: 5px 15px;
+  position: relative;
+  display: block;
+  float: left;
+  transition-duration: 0.5s;
+  border-radius: initial;
 }
 #categoriesContainer li:last-child {
   border-radius: 0 0 10px 10px;

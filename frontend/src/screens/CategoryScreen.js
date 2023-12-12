@@ -54,7 +54,7 @@ const CategoryScreen = {
         <div class="cards-container cards-new">
           ${products.map(product => `
           <div class="product-card">
-            <a href="./#/product/${product._id}">
+            <a href="./#/product/${product.slug}">
               <img src="${product.image}" alt="${product.name}">
               ${product.discount>0?`<span class="discount">${product.discount}%</span>`:""}
             </a>

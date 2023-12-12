@@ -1,5 +1,5 @@
 import { getCartItems } from '../localStorage';
-import { getProduct } from "../api";
+import { getProductBySlug } from "../api";
 import { parseRequestUrl } from "../utils";
 import { addToCart, removeFromCart, addAlert, maxAlert } from '../cart';
 
@@ -11,7 +11,7 @@ function convertToLinkEnd(str) {
 const ProductScreen = {
   after_render: async () => {
     const request = parseRequestUrl();
-    const product = await getProduct(request.id);
+    const product = await getProductBySlug(request.id);
     const divQty = document.querySelector(".plus-minus");
     const addBtn = document.getElementById('addBtn');
     if (addBtn) {
@@ -93,7 +93,7 @@ const ProductScreen = {
   },
   render: async () => {
     const request = parseRequestUrl();
-    const product = await getProduct(request.id);
+    const product = await getProductBySlug(request.id);
     const cartItems = getCartItems();
     const existItem = cartItems.find((x) => x.product === product._id);
     if (product.error) {
@@ -117,7 +117,8 @@ const ProductScreen = {
               <i class="fa fa-plus"></i>
             </button>
           </div>
-          <div class="product-description">${(product.description.split('\n').map(d=>`<p>${d}</p>`).join('\n'))}
+          <div class="product-description">
+            ${(product.description.split('\n').map(d=>`<p>${d}</p>`).join('\n'))}
             <p>* Original Pokémon Center</p>
           </div>
           <p><i class="far fa-credit-card"></i> 12 cuotas sin interes $${(product.price / 12).toFixed(2)}</p>

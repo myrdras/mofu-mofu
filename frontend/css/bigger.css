@@ -10,10 +10,6 @@ h2 {
   padding: 0 5vw;
 }
 
-#categoriesContainer {
-  left: calc(50% + 5vw);
-}
-
 /* Aside (product detail y carrito) */
 aside {
   width: 400px;
@@ -40,6 +36,9 @@ aside {
 .product-card img {
   width: 150px;
   height: 150px;
+}
+.product-card .product-info div p:nth-child(2) {
+  max-height: 5em;
 }
 .product-card .product-info figure i {
   font-size: 35px;
@@ -71,9 +70,6 @@ footer section:last-child {
   .main-navbar {
     padding: 0 10vw;
   }
-  #categoriesContainer {
-    left: calc(50% + 7vw);
-  }
   #productDetail > img:nth-child(1) {
     max-width: 600px;
   }
@@ -101,6 +97,10 @@ footer section:last-child {
     justify-content: space-between;
     margin-top: 12px;
     flex-direction: row;
+  }
+  .product-card .product-info div p:nth-child(2) {
+    overflow: hidden;
+    max-height: none;
   }
   .product-card .product-info figure {
     margin: 0;

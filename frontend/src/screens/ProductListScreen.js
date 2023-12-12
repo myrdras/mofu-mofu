@@ -41,7 +41,7 @@ const ProductListScreen = {
     ${DashboardMenu.render({ selected: "products" })}
     <div class="dashboard-content">
       <h1>Productos</h1>
-      <button id="create-product-button" class="primary">
+      <button id="create-product-button" class="primary-button">
         Crear Producto
       </button>
       <div class="product-list">
@@ -51,8 +51,9 @@ const ProductListScreen = {
               <th>ID</th>
               <th>NOMBRE</th>
               <th>PRECIO</th>
+              <th>DESC</th>
               <th>CATEGORIA</th>
-              <th>NUEVA TEMPORADA</th>
+              <th>NT</th>
               <th class="tr-action">ACCION</th>
             <tr>
           </thead>
@@ -61,11 +62,12 @@ const ProductListScreen = {
               .map(
                 (product) => `
             <tr>
-              <td>${product._id}</td>
+              <td>${product._id.substring(0, 12)} ${product._id.substring(12)}</td>
               <td>${product.name}</td>
               <td>${product.price}</td>
+              <td>${product.discount}</td>
               <td>${product.category}</td>
-              <td>${product.newSeason}</td>
+              <td>${product.newSeason?'Si':'No'}</td>
               <td>
               <button id="${product._id}" class="edit-button">Editar</button>
               <button id="${product._id}" class="delete-button">Borrar</button>

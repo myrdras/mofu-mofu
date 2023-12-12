@@ -3,6 +3,8 @@ uploads/*.jpg
 uploads/*.png
 package-lock.json
 frontend/package-lock.json
+frontend/main.js
+frontend/assets/
 
 # Logs
 logs

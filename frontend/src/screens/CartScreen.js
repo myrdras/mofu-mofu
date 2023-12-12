@@ -110,6 +110,25 @@ const CartScreen = {
             </div>
             <p class="link-cp"><a href="https://www.correoargentino.com.ar/formularios/cpa" target="_blank">No se mi código postal</a></p>
           </div>
+          <fieldset>
+            <legend><object type="image/svg+xml" data="../assets/tauros.svg" class="tauros"></object> Envío a Domicilio</legend>
+            <div>
+              <input type="radio" id="moto" name="homeDelivery" value="moto" />
+              <label for="moto">Entega en moto en el día <br><small>(sujeto a disponibilidad)</small></label>
+            </div>
+            <div>
+              <input type="radio" id="mercado" name="homeDelivery" value="mercado" />
+              <label for="mercado">Mercado Envíos</label>
+            </div>
+            <div>
+              <input type="radio" id="oca" name="homeDelivery" value="oca" />
+              <label for="oca">OCA Estándar</label>
+            </div>
+            <div>
+              <input type="radio" id="andreani" name="homeDelivery" value="andreani" />
+              <label for="andreani">Andreani</label>
+            </div>
+          </fieldset>
           <div class="shipping-form"></div>
           <div class="order">
             <p class="order-title">Total</p>

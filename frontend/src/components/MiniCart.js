@@ -13,7 +13,7 @@ const MiniCart = {
       document.getElementById('miniCartBtn').addEventListener('click', () => {
         document.location.hash = '/carrito';
         let event = new Event('click');
-        document.querySelector('.navbar-shopping-cart').dispatchEvent(event);
+        document.querySelector('.navbar-shopping-cart > i').dispatchEvent(event);
       });
     }
   },

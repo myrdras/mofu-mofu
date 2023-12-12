@@ -8,15 +8,27 @@ const Nav = {
     return `
       <ul>
         <li class="search-bar">
-          <form action="" method="get">
-            <input class="search" id="searchleft" type="text" name="q" value="${value || ''}" placeholder="Buscar">
-            <label class="search-button" for="searchleft"><i class="fas fa-magnifying-glass"></i><span>Lupa</span></label>
+          <form id="search-form">
+            <input class="search" id="q" type="text" name="q" value="${value || ''}" placeholder="Buscar">
+            <label class="search-button" for="q"><i class="fas fa-magnifying-glass"></i><span>Lupa</span></label>
           </form>
         </li>
         <li>
           <a href="/#/"><i class="fas fa-house"></i><span>Inicio</span></a>
         </li>
-        <li id="categoryMenu"><i class="fas fa-list"></i><span>Categorias</span></li>
+        <li id="categoryMenu" tabIndex="-1">
+          <div tabIndex="0"><i class="fas fa-list"></i><span>Categorias</span></div>
+          <ul id="categoriesContainer">
+            <li><a href="/#/categoria/todos">Todos</a></li>
+            <li><a href="/#/categoria/ofertas">Ofertas</a></li>
+            <li><a href="/#/categoria/nueva-temporada">Nueva Temporada</a></li>
+            <li><a href="/#/categoria/llaveros">Llaveros</a></li>
+            <li><a href="/#/categoria/peluches">Peluches</a></li>
+            <li><a href="/#/categoria/peluches-grandes">Peluches Grandes</a></li>
+            <li><a href="/#/categoria/peluches-pikachu">Peluches Pikachu</a></li>
+            <li><a href="/#/categoria/sitting-cutties">Sitting Cutties</a></li>
+          </ul>
+        </li>
         <li class="navbar-shopping-cart">
           <i class="fas fa-cart-shopping"></i>
           <div>${cartItems.reduce((a, c) => a + c.qty, 0)}</div>
@@ -26,10 +38,10 @@ const Nav = {
   },
   after_render: async () => {
     const nav = document.querySelector('nav');
-    const shopMenu = document.querySelector('.navbar-shopping-cart');
+    const shopMenu = document.querySelector('.navbar-shopping-cart > i');
     const shopOrder = document.querySelector('#shoppingCartContainer');
-    const categoryMenu = document.querySelector('#categoryMenu');
-    const categoryList = document.querySelector('#categoriesContainer');
+    const categoryMenu = document.querySelector('#categoryMenu > div');
+    //const categoryList = document.querySelector('#categoriesContainer');
     const queryCloseAside = document.querySelectorAll('.fa-angle-left');
     const overlay = document.querySelector(".overlay");
     const searchInput = document.querySelector(".search");
@@ -50,19 +62,21 @@ const Nav = {
         nav.style.position = 'fixed';
       }
     }
-
+/*
     function toggleCategoryList() {
-      let flag = categoryList.classList.contains('inactive');
+      //let flag = categoryList.classList.contains('inactive');
       closeAll();
-      if (flag) {
-        categoryList.classList.remove('inactive');
+      //if (flag) {
+        //categoryList.classList.remove('inactive');
+        console.log('toogle');
         categoryMenu.classList.add('tag-hover');
-      }
-    }
+        categoryMenu.parentElement.focus();
+      //}
+    }*/
 
     function closeAll() {
       shopOrder.classList.add('inactive');
-      categoryList.classList.add('inactive');
+      //categoryList.classList.add('inactive');
       overlay.classList.add("inactive");
       shopMenu.classList.remove('tag-hover');
       categoryMenu.classList.remove('tag-hover');
@@ -82,13 +96,13 @@ const Nav = {
     }
     function searchBarOn() {
       closeAll()
-      searchContainer.classList.add('tag-hover');
+      searchContainer.querySelector('form').classList.add('tag-hover');
       searchContainer.classList.add('search-bar-on');
       navText[1].classList.add('inactive');
       navText[2].classList.add('inactive');
     }
     function searchBarOff() {
-      searchContainer.classList.remove('tag-hover');
+      searchContainer.querySelector('form').classList.remove('tag-hover');
       searchContainer.classList.remove('search-bar-on');
       navText[1].classList.remove('inactive');
       navText[2].classList.remove('inactive');
@@ -106,7 +120,10 @@ const Nav = {
     }
 
     shopMenu.addEventListener('click', toggleShopOrder);
-    categoryMenu.addEventListener('click', toggleCategoryList);
+    //categoryMenu.addEventListener('click', toggleCategoryList);
+    categoryMenu.addEventListener('click', () => {
+      categoryMenu.parentElement.focus();
+    });
     overlay.addEventListener('click', closeAll);
     closeAside.forEach(btn => {btn.addEventListener('click', closeAll)});
     searchContainer.addEventListener('click', e => {
@@ -116,6 +133,14 @@ const Nav = {
     });
     searchInput.addEventListener('focus', listenFocus);
     searchInput.addEventListener('blur', listenBlur);
+
+    document
+      .getElementById('search-form')
+      .addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const searchKeyword = document.getElementById('q').value;
+        document.location.hash = `/buscar/?q=${searchKeyword}`;
+      });
   },
 };
 

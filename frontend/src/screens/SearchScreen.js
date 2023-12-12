@@ -1,9 +1,14 @@
-import { getProduct, getAllProducts } from "../api";
+import { parseRequestUrl } from "../utils";
+import { getProduct, getCategory, getAllProducts } from "../api";
 import { addToCart, addAlert, maxAlert } from '../cart';
 import { getCartItems } from '../localStorage';
-import { parseRequestUrl } from '../utils';
 
-const HomeScreen = {
+function convertToTitleCase(str) {
+  if (!str) { return "" }
+  return str.toLowerCase().replace(/\b\w/g, s => s.toUpperCase()).replaceAll('-', ' ');
+}
+
+const SearchScreen = {
   after_render: () => {
     const btns = document.querySelectorAll('#addBtn');
     if (btns) {
@@ -32,41 +37,22 @@ const HomeScreen = {
     }
   },
   render: async () => {
-    const products = await getAllProducts({});
-    const productsNew = products.filter(p => p.newSeason);
-    const productsOffer = products.filter(p => p.discount > 0);
+    const { value } = parseRequestUrl();
+    const products = await getAllProducts({ searchKeyword: value });
     return `
-      <section id="trends-container">
-        <h2><img src="./assets/pokeball.svg"><span>Nueva temporada</span></h2>
+      <section id="category">
+        <h2><img src="./assets/pokeball.svg"><span>${convertToTitleCase(value)}</span></h2>
+        ${products.length > 0 ? `
         <div class="cards-container cards-new">
-        ${productsNew.map(product => `
+          ${products.map(product => `
           <div class="product-card">
-            <a href="./#/product/${product.slug}"><img src="${product.image}" alt="${product.name}"></a>
-            <div class="product-info">
-              <div>
-                <p>$${product.price}</p>
-                <p>${product.name}</p>
-              </div>
-              <figure>
-                <i id="addBtn" class="fas fa-cart-plus" value="${product._id}"></i>
-              </figure>
-            </div>
-          </div>
-        `).join('\n')}
-        </div>
-      </section>
-      <section id="offers-container">
-        <h2><img src="./assets/pokeball.svg"><span>Ofertas</span></h2>
-        <div class="cards-container cards-new">
-        ${productsOffer.map(product => `
-          <div class="product-card">
-            <a href="./#/product/${product._id}">
+            <a href="./#/product/${product.slug}">
               <img src="${product.image}" alt="${product.name}">
-              <span class="discount">${product.discount}%</span>
+              ${product.discount>0?`<span class="discount">${product.discount}%</span>`:""}
             </a>
             <div class="product-info">
               <div>
-                <p><small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}</p>
+                <p>${product.discount>0?`<small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}`:`$${product.price}`}</p>
                 <p>${product.name}</p>
               </div>
               <figure>
@@ -74,11 +60,12 @@ const HomeScreen = {
               </figure>
             </div>
           </div>
-        `).join('\n')}
+          `).join('\n')}`
+        : '<div>No hay productos en esta categoria</div>'}
         </div>
       </section>
     `;
   },
 };
 
-export default HomeScreen;
+export default SearchScreen;
