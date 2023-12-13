@@ -3,11 +3,11 @@ const AboutScreen = {
     return `
       <section class="about">
         <div class="separator"><img src="./assets/ico.svg" alt="">¿Quiénes somos?</div>
-        <div>
-          <p>Te gusta Pokémon? La serie? El videojuego? Las cartas? A nosotros también! Todos los que atendemos somos fanáticos así como a vos.</p>
-          <p>Mofu Mofu sé creo por fans para otros fans, porque no había peluches de nuestros queridos Pokémons.</p>
-          <p>Por este motivo decidimos buscar un modo de traerlos pero que mejor lugar que desde su propia casa el "Pokémon Center" de Japón!</p>
-          <p>Así que con mucho esfuerzo y trabajo lo logramos, Mofu Mofu es el lugar donde puedes encontrar a tu compañero Pokémon de forma muy suavecita.</p>
+        <div class="section__description">
+          <p>Mofu Mofu se creó por fans para otros fans, porque no había peluches de los adorables Pokemones.</p>
+          <p>Por este motivo decidimos comenzar con la búsqueda de un modo para traerlos y de que mejor lugar que directo desde su casa el “Pokemón Center” de Japón!</p>
+          <p>Y después de mucho tiempo de esfuerzo y trabajo lo logramos!</p>
+          <p>Mofu Mofu es el lugar donde puedes encontrar a tus Pokemones favoritos de forma más suavecita.</p>
         </div>
       </section>
     `;

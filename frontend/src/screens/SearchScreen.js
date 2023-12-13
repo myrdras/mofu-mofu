@@ -61,7 +61,7 @@ const SearchScreen = {
             </div>
           </div>
           `).join('\n')}`
-        : '<div>No hay productos en esta categoria</div>'}
+        : '<div>No hay productos con esa palabra</div>'}
         </div>
       </section>
     `;

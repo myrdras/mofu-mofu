@@ -18,9 +18,11 @@
 }
 * {
   box-sizing: border-box;
-  font-family: "Mofu", sans-serif;
   margin: 0;
   padding: 0;
+}
+body {
+  font-family: "Mofu", sans-serif;
 }
 a {
   text-decoration: none;
@@ -74,12 +76,14 @@ aside {
   position: fixed;
   overflow-x: auto;
   right: 0;
-  top: 60px;
   background-color: var(--white);
   z-index: 2;
 }
 figure {
   position: relative;
+}
+.section__description {
+  font-family: "Baloo 2", sans-serif;
 }
 
 /* Header */
