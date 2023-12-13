@@ -1,10 +1,19 @@
 //import Chartist from 'chartist';
 import DashboardMenu from '../components/DashboardMenu';
 import { getSummary } from '../api';
+import { clearUser } from '../localStorage';
 
 let summary = {};
 const DashboardScreen = {
-  after_render: () => {/*
+  after_render: () => {
+    console.log(summary)
+    if (!('error' in summary)) {
+      document.getElementById('signout-btn').addEventListener('click', () => {
+        clearUser();
+        document.location.hash = '/';
+      });
+    }
+    /*
     new Chartist.Line(
       '.ct-chart-line',
       {
@@ -31,40 +40,45 @@ const DashboardScreen = {
     );*/
   },
   render: async () => {
-    summary = await getSummary();
-    return `
-    <div class="dashboard">
-      ${DashboardMenu.render({ selected: 'dashboard' })}
-      <div class="dashboard-content">
-        <h1>Dashboard</h1>
-       
-        <ul class="summary-items">
-          <li>
-            <div class="summary-title color2">
-              <span><i class="fa fa-users"></i> Orders</span>
+    try {
+      summary = await getSummary();
+      return `
+      <div class="dashboard">
+        ${DashboardMenu.render({ selected: 'dashboard' })}
+        <div class="dashboard-content">
+          <h1>Dashboard</h1>
+         
+          <ul class="summary-items">
+            <li>
+              <div class="summary-title color2">
+                <span><i class="fa fa-users"></i> Orders</span>
+              </div>
+              <div class="summary-body">${summary.orders[0].numOrders}</div>
+            </li>
+            <li>
+              <div class="summary-title color3">
+                <span><i class="fa fa-users"></i> Sales</span>
+              </div>
+              <div class="summary-body">$${summary.orders[0].totalSales}</div>
+            </li>
+          </ul>
+          <div class="charts">
+            <div>
+              <h2>Sales</h2>
+              <div class="ct-perfect-fourth ct-chart-line"></div>
             </div>
-            <div class="summary-body">${summary.orders[0].numOrders}</div>
-          </li>
-          <li>
-            <div class="summary-title color3">
-              <span><i class="fa fa-users"></i> Sales</span>
+            <div>
+              <h2>Categories</h2>
+              <div class="ct-perfect-fourth ct-chart-pie"></div>
             </div>
-            <div class="summary-body">$${summary.orders[0].totalSales}</div>
-          </li>
-        </ul>
-        <div class="charts">
-          <div>
-            <h2>Sales</h2>
-            <div class="ct-perfect-fourth ct-chart-line"></div>
           </div>
-          <div>
-            <h2>Categories</h2>
-            <div class="ct-perfect-fourth ct-chart-pie"></div>
-          </div>
-        </div>          
+          <div id="signout-btn">Salir</div>
+        </div>
       </div>
-    </div>
-    `;
+      `;
+    } catch (err) {
+      document.location.hash = '/signin';
+    }
   },
 };
 export default DashboardScreen;

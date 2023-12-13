@@ -10,9 +10,9 @@ userRouter.get(
   expressAsyncHandler(async (req, res) => {
     try {
       const user = new User({
-        name: 'admin',
-        email: 'admin@example.com',
-        password: 'jsamazona',
+        name: 'shiro',
+        email: 'admin@shiro.com',
+        password: 'shiro1234',
         isAdmin: true,
       });
       const createdUser = await user.save();
@@ -31,7 +31,7 @@ userRouter.post(
     });
     if (!signinUser) {
       res.status(401).send({
-        message: 'Invalid Email or Password',
+        message: 'Email or Contraseña Inválidas',
       });
     } else {
       res.send({

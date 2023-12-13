@@ -23,3 +23,29 @@ export const rerender = async (component, tag='#main-container') => {
 export const redirectUser = () => {
   document.location.hash = '/dashboard';
 };
+
+export const showLoading = () => {
+  document.getElementById('loading-overlay').classList.remove('inactive');
+};
+
+export const hideLoading = () => {
+  document.getElementById('loading-overlay').classList.add('inactive');
+};
+
+export const showMessage = (message, callback) => {
+  document.getElementById('message-overlay').innerHTML = `
+  <div>
+    <div id="message-overlay-content">${message}</div>
+    <button id="message-overlay-close-button">OK</button>
+  </div>
+  `;
+  document.getElementById('message-overlay').classList.remove('inactive');
+  document
+    .getElementById('message-overlay-close-button')
+    .addEventListener('click', () => {
+      document.getElementById('message-overlay').classList.add('inactive');
+      if (callback) {
+        callback();
+      }
+    });
+};
