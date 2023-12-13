@@ -35,6 +35,6 @@ app.use((err, req, res, next) => {
   const status = err.name && err.name === 'ValidationError' ? 400 : 500;
   res.status(status).send({ message: err.message });
 });
-app.listen(5000, () => {
-  console.log("server at http://localhost:5000");
+app.listen(config.PORT, () => {
+  console.log("server at http://localhost:"+config.PORT);
 });
