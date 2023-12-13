@@ -1,6 +1,41 @@
 import { getCartItems } from '../localStorage';
 import { addToCart, removeFromCart } from '../cart';
 
+function getValueFromCP(l, n) {
+  let p = Object.keys(l)[0];
+  Object.keys(l).some(k => {
+    if (k >= n) {
+      p = k;
+      return true;
+    } 
+  });
+  return l[p];
+}
+
+const deliveryPrices = {
+  Moto: {
+    1489: 1830.00,
+    1836: 2885.00,
+    1899: 3930.00,
+  },
+  Andreani: {
+    1999: 3744.01,
+    9999: 6374.64
+  },
+  Mercado: {
+    1899: 2132.93,
+    3299: 4052.14,
+    4399: 5001.00,
+    9999: 6107.93
+  },
+  Oca: {
+    1999: 3169.04,
+    3499: 3829.58,
+    4399: 5067.18,
+    9999: 6429.14
+  },
+}
+
 const CartScreen = {
   after_render: async () => {
     const qtyContainer = document.querySelectorAll(".plus-minus");
@@ -58,6 +93,38 @@ const CartScreen = {
         document.location.hash = '/purchase/delivery';
       });
     }
+
+    document
+      .querySelector('.cp')
+      .addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const cpa = e.currentTarget.querySelector('#cpInput').value;
+        document.getElementById('deliveryOptions').innerHTML = `
+        <fieldset>
+          <legend><object type="image/svg+xml" data="../assets/tauros.svg" class="tauros"></object> Envío a Domicilio</legend>
+          ${cpa < Math.max(...Object.keys(deliveryPrices.Moto))+1 ? `
+          <div>
+            <input type="radio" id="moto" name="homeDelivery" value="moto" />
+            <label for="moto">Entega en moto en el día <br><small>(sujeto a disponibilidad)</small></label>
+            <label for="moto">$${getValueFromCP(deliveryPrices.Moto, cpa)}</label>
+          </div>`:''}
+          <div>
+            <input type="radio" id="mercado" name="homeDelivery" value="mercado" />
+            <label for="mercado">Mercado Envíos</label>
+            <label for="mercado">$${getValueFromCP(deliveryPrices.Mercado, cpa)}</label>
+          </div>
+          <div>
+            <input type="radio" id="oca" name="homeDelivery" value="oca" />
+            <label for="oca">OCA Estándar</label>
+            <label for="oca">$${getValueFromCP(deliveryPrices.Oca, cpa)}</label>
+          </div>
+          <div>
+            <input type="radio" id="andreani" name="homeDelivery" value="andreani" />
+            <label for="andreani">Andreani</label>
+            <label for="andreani">$${getValueFromCP(deliveryPrices.Andreani, cpa)}</label>
+          </div>
+        </fieldset>`;
+      });
   },
   render: async () => {
     const cartItems = getCartItems();
@@ -102,33 +169,15 @@ const CartScreen = {
           </div>
         
           <div class="cp-container">
-            <div class="cp">
+            <form class="cp">
               <div class="inputGroup">
-                <input type="text" name="name" id="name" placeholder="Código Postal" required />
+                <input type="number" name="cp" id="cpInput" placeholder="Código Postal" min="1000" max="9999" required />
               </div>
               <input class="cp-btn" type="submit" value="Calcular">
-            </div>
+            </form>
             <p class="link-cp"><a href="https://www.correoargentino.com.ar/formularios/cpa" target="_blank">No se mi código postal</a></p>
           </div>
-          <fieldset>
-            <legend><object type="image/svg+xml" data="../assets/tauros.svg" class="tauros"></object> Envío a Domicilio</legend>
-            <div>
-              <input type="radio" id="moto" name="homeDelivery" value="moto" />
-              <label for="moto">Entega en moto en el día <br><small>(sujeto a disponibilidad)</small></label>
-            </div>
-            <div>
-              <input type="radio" id="mercado" name="homeDelivery" value="mercado" />
-              <label for="mercado">Mercado Envíos</label>
-            </div>
-            <div>
-              <input type="radio" id="oca" name="homeDelivery" value="oca" />
-              <label for="oca">OCA Estándar</label>
-            </div>
-            <div>
-              <input type="radio" id="andreani" name="homeDelivery" value="andreani" />
-              <label for="andreani">Andreani</label>
-            </div>
-          </fieldset>
+          <div id="deliveryOptions"></div>
           <div class="shipping-form"></div>
           <div class="order">
             <p class="order-title">Total</p>

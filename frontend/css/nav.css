@@ -200,7 +200,7 @@ nav {
 .shopping-cart .qty {
   color: var(--light-gray);
 }
-.shopping-cart .price{
+.shopping-cart .price {
   font-size: var(--md);
   font-weight: bold;
 }
@@ -255,4 +255,17 @@ nav {
 .link-cp {
   margin-bottom: .5em;
   padding-left: 1em;
+}
+
+#deliveryOptions fieldset > div {
+  display: flex;
+}
+#deliveryOptions fieldset > div > * {
+  margin-left: .5em;
+}
+#deliveryOptions fieldset > div > :nth-child(2) {
+  width: 180px;
+}
+#deliveryOptions fieldset > div > :last-child {
+  margin-left: 1em;
 }
