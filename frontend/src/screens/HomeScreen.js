@@ -1,7 +1,6 @@
 import { getProduct, getAllProducts } from "../api";
 import { addToCart, addAlert, maxAlert } from '../cart';
 import { getCartItems } from '../localStorage';
-import { parseRequestUrl } from '../utils';
 
 const HomeScreen = {
   after_render: () => {
