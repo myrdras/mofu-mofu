@@ -33,9 +33,9 @@ export const getProduct = async (id) => {
         'Content-Type': 'application/json',
       },
     });
-    if (res.statusText !== 'OK') {
-      throw new Error(res.data.message);
-    }
+    // if (res.statusText !== 'OK') {
+    //   throw new Error(res.data.message);
+    // }
     return res.data;
   } catch (err) {
     console.log(err);

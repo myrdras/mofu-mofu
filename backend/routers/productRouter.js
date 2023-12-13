@@ -42,7 +42,7 @@ productRouter.post(
   expressAsyncHandler(async (req, res) => {
     const product = new Product({
       name: 'Sample Product',
-      image: './assets/bg-gray.jpg',
+      image: '/frontend/assets/bg-gray.jpg',
       description: 'sample desc',
       category: 'Peluches',
       slug: 'sample-product',
