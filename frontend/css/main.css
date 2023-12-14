@@ -112,6 +112,8 @@ header {
   display: block;
   position: relative;
   text-align: center;
+  font-size: 0;
+  padding: 10px 0;
   background-color: var(--bg-color);
   background-image: url("../assets/fondo-web.png");
   background-repeat: no-repeat;

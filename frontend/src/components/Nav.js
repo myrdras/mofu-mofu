@@ -141,6 +141,13 @@ const Nav = {
         const searchKeyword = document.getElementById('q').value;
         document.location.hash = `/buscar/?q=${searchKeyword}`;
       });
+
+    const linksHelp = document.querySelectorAll('.help a');
+    linksHelp.forEach(a => {
+      a.addEventListener('click', (() => {
+        window.scrollTo(0, document.querySelector('header').offsetHeight);
+      }))
+    });
   },
 };
 
