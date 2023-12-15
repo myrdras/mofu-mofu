@@ -1,5 +1,6 @@
 import { getCartItems } from '../localStorage';
 import { removeFromCart } from '../cart';
+import { numberWithDots } from '../utils'
 
 const MiniCart = {
   after_render: () => {
@@ -40,7 +41,7 @@ const MiniCart = {
             </figure>
             <p class="name">${item.name}</p>
             <p class="qty">x${item.qty}</p>
-            <p class="price">$${item.price * item.qty}</p>
+            <p class="price">$${numberWithDots(item.price * item.qty)}</p>
             <i class="fas fa-xmark" value="${item.product}"></i>
           </div>
         `).join('\n') + `
@@ -48,7 +49,7 @@ const MiniCart = {
 
         <div class="order">
           <p class="order-title">Subtotal</p>
-          <p class="order-price">$${cartSubtotal - cartDiscount}</p>
+          <p class="order-price">$${numberWithDots(cartSubtotal - cartDiscount)}</p>
         </div>
 
         <button id="miniCartBtn" class="primary-button">Ir al carrito</button>

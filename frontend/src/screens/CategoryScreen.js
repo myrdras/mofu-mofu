@@ -1,4 +1,4 @@
-import { parseRequestUrl } from "../utils";
+import { parseRequestUrl, numberWithDots } from "../utils";
 import { getProduct, getCategory, getAllProducts } from "../api";
 import { addToCart, addAlert, maxAlert } from '../cart';
 import { getCartItems } from '../localStorage';
@@ -60,7 +60,9 @@ const CategoryScreen = {
             </a>
             <div class="product-info">
               <div>
-                <p>${product.discount>0?`<small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}`:`$${product.price}`}</p>
+                <p>${product.discount>0
+                  ? `<small><del>$${numberWithDots(product.price)}</del></small>$${numberWithDots(product.price*(100-product.discount)/100)}`
+                  : `$${numberWithDots(product.price)}`}</p>
                 <p>${product.name}</p>
               </div>
               <figure>

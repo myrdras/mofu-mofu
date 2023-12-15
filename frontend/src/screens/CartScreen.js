@@ -1,5 +1,6 @@
 import { getCartItems } from '../localStorage';
 import { addToCart, removeFromCart } from '../cart';
+import { numberWithDots } from '../utils'
 
 function getValueFromCP(l, n) {
   let p = Object.keys(l)[0];
@@ -156,16 +157,16 @@ const CartScreen = {
                   </button>
                 </div>
               </div>
-              <p class="price">$${item.price * item.qty}</p>
+              <p class="price">$${numberWithDots(item.price * item.qty)}</p>
               <i class="fas fa-xmark" value="${item.product}" aria-hidden="true"></i>
             </div>
           `).join('\n')}
           </div>
           <div class="order">
             <p class="order-title">Descuento</p>
-            <p class="order-price">$${cartDiscount}</p>
+            <p class="order-price">$${numberWithDots(cartDiscount)}</p>
             <p class="order-title">Subtotal <small>(sin envio)</small></p>
-            <p class="order-price">$${cartSubtotal - cartDiscount}</p>
+            <p class="order-price">$${numberWithDots(cartSubtotal - cartDiscount)}</p>
           </div>
         
           <div class="cp-container">
@@ -181,7 +182,7 @@ const CartScreen = {
           <div class="shipping-form"></div>
           <div class="order">
             <p class="order-title">Total</p>
-            <p class="order-price">$${cartSubtotal - cartDiscount}</p>
+            <p class="order-price">$${numberWithDots(cartSubtotal - cartDiscount)}</p>
           </div>
           <button id="purchase" class="primary-button">Iniciar compra</button>
           <p class="link-cp"><a href="/#/categoria/todos">Ver mas productos</a></p>

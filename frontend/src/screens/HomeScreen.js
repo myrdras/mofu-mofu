@@ -1,6 +1,7 @@
 import { getProduct, getAllProducts } from "../api";
 import { addToCart, addAlert, maxAlert } from '../cart';
 import { getCartItems } from '../localStorage';
+import { numberWithDots } from '../utils'
 
 const HomeScreen = {
   after_render: () => {
@@ -43,7 +44,7 @@ const HomeScreen = {
             <a href="./#/product/${product.slug}"><img src="${product.image}" alt="${product.name}"></a>
             <div class="product-info">
               <div>
-                <p>$${product.price}</p>
+                <p>$${numberWithDots(product.price)}</p>
                 <p>${product.name}</p>
               </div>
               <figure>
@@ -65,7 +66,7 @@ const HomeScreen = {
             </a>
             <div class="product-info">
               <div>
-                <p><small><del>$${product.price}</del></small>$${(product.price*(100-product.discount)/100)}</p>
+                <p><small><del>$${numberWithDots(product.price)}</del></small>$${numberWithDots(product.price*(100-product.discount)/100)}</p>
                 <p>${product.name}</p>
               </div>
               <figure>

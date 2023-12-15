@@ -49,3 +49,7 @@ export const showMessage = (message, callback) => {
       }
     });
 };
+
+export const numberWithDots = (x) => {
+  return x.toString().replace(/\./g, ",").replace(/\B(?<!\,\d*)(?=(\d{3})+(?!\d))/g, ".");
+}
